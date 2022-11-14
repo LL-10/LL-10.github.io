@@ -6,7 +6,12 @@ import HEX from './modules/colors.js';
 body.clear();
 var menu = body.append('div');
 var list = menu.append('ul');
-var l1 = list.append('li');
+var othello = list.append('li');
+var l2 = list.append('li');
+
+othello.href = "./othello/othello.html"
+othello.innerHTML = "Othello"
+
 /*
 var div = body.append('div');
 var username = div.append('input');
