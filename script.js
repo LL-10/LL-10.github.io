@@ -4,6 +4,9 @@ import Page from './modules/HTMLpage.js';
 import HEX from './modules/colors.js';
 
 body.clear();
+var menu = body.append('div');
+var list = menu.append('ul');
+var l1 = list.append('li');
 /*
 var div = body.append('div');
 var username = div.append('input');
