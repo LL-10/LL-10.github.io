@@ -4,7 +4,7 @@ import Page from './modules/HTMLpage.js';
 import HEX from './modules/colors.js';
 
 body.clear();
-var div = body.append('div');
+/*var div = body.append('div');
 var username = div.append('input');
 var password = div.append('input');
 var submit = div.append('input');
@@ -35,25 +35,4 @@ submit.setStyle('margin','0 1px');
 host.setStyle('width','132px');
 host.setStyle('margin','0 1px');
 port.setStyle('width','132px');
-port.setStyle('margin','0 1px');
-
-submit.on('click', ()=>{
- var xhr = new XMLHttpRequest();
- xhr.onreadystatechange = function () {
-  if (xhr.readyState === 4) {
-   console.log(xhr.response);
-  }
- }
- var conn = 'http://';
- host.value?conn+=host.value:conn+='0.0.0.0';
- conn+=':';
- port.value?conn+=port.value:conn+='1024';
- conn+='/';
- xhr.open('POST', conn, true);
- xhr.setRequestHeader('action','del');
- xhr.setRequestHeader('username', username.value);
- xhr.setRequestHeader('password', password.value);
- xhr.send();
-});
-import Matrix from './modules/library/Matrix.js'
-console.log(new Matrix([[3,4],[5,6]]).line(1,1));
+port.setStyle('margin','0 1px');*/
