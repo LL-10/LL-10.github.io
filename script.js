@@ -3,7 +3,16 @@ import {html, head, title, body} from './modules/HTMLelement.js';
 import Page from './modules/HTMLpage.js';
 import HEX from './modules/colors.js';
 
+var link1 = head.append('link');
+var link2 = head.append('link');
+
+link1.rel = "stylesheet"
+link1.href = "https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+link2.rel = "stylesheet"
+link2.href = "./style/menu.css"
+
 body.clear();
+
 var menu = body.append('div');
 var list = menu.append('ul');
 var othello = list.append('li');
