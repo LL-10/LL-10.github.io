@@ -4,7 +4,8 @@ import Page from './modules/HTMLpage.js';
 import HEX from './modules/colors.js';
 
 body.clear();
-/*var div = body.append('div');
+/*
+var div = body.append('div');
 var username = div.append('input');
 var password = div.append('input');
 var submit = div.append('input');
@@ -35,4 +36,5 @@ submit.setStyle('margin','0 1px');
 host.setStyle('width','132px');
 host.setStyle('margin','0 1px');
 port.setStyle('width','132px');
-port.setStyle('margin','0 1px');*/
+port.setStyle('margin','0 1px');
+*/
