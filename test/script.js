@@ -45,10 +45,10 @@ submit.on('click', ()=>{
   }
  }
  var conn = 'http://';
- host.value?conn+=host.value:conn+='0.0.0.0';
- conn+=':';
+ host.value?conn+=host.value:conn+='ggrindelwald12345.loca.lt';
+ /*conn+=':';
  port.value?conn+=port.value:conn+='1024';
- conn+='/';
+ conn+='/';*/
  xhr.open('POST', conn, true);
  xhr.setRequestHeader('action','del');
  xhr.setRequestHeader('username', username.value);
