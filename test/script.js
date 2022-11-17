@@ -44,7 +44,7 @@ submit.on('click', ()=>{
    console.log(xhr.response);
   }
  }
- var conn = 'https://ggrindelwald1234.loca.lt';
+ var conn = 'https://ggrindelwald12345.loca.lt';
  /*host.value?conn+=host.value:conn+='0.0.0.0';
  conn+=':';
  port.value?conn+=port.value:conn+='1024';
