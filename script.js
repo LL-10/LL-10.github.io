@@ -7,7 +7,7 @@ const HOME = new Page("LL-10", true, ()=>{
  var link1 = head.append('link');
  var link2 = head.append('link');
  link1.setAttribute("rel", "stylesheet");
- link1.setAttribute("rel", "https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+ link1.setAttribute("href", "https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
  link2.setAttribute("rel", "stylesheet");
  link2.setAttribute("href", "./style/menu.css");
  var menu = body.append('div');
@@ -15,8 +15,8 @@ const HOME = new Page("LL-10", true, ()=>{
  var list = menu.append('ul');
  var othello = list.append('li');
  var l2 = list.append('li');
- othello.href = "./othello/othello.html"
- othello.innerHTML = "Othello"
+ othello.setAttribute("href", "./othello/othello.html");
+ othello.init("Othello");
 });
 HOME.build();
 
