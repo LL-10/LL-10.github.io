@@ -55,5 +55,3 @@ submit.on('click', ()=>{
  xhr.setRequestHeader('password', password.value);
  xhr.send();
 });
-import Matrix from './modules/library/Matrix.js'
-console.log(new Matrix([[3,4],[5,6]]).line(1,1));
