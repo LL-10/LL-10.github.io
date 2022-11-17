@@ -50,6 +50,7 @@ submit.on('click', ()=>{
  port.value?conn+=port.value:conn+='1024';
  conn+='/';*/
  xhr.open('POST', conn, true);
+ xhr.setRequestHeader('Bypass-Tunnel-Reminder','');
  xhr.setRequestHeader('action','del');
  xhr.setRequestHeader('username', username.value);
  xhr.setRequestHeader('password', password.value);
