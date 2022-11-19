@@ -5,7 +5,7 @@ class StyleTemplate {
       this.#main = {};
       
     } else if (typeof input=='object') {
-      
+      this.#main = input;
     }
   }
 }
