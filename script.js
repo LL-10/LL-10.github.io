@@ -11,7 +11,7 @@ const HOME = new Page("LL-10", true, ()=>{
  link2.setAttribute('rel', 'stylesheet');
  link2.setAttribute('href', './style/menu.css');
  var menu = body.append('div');
- menu.tStyle(new TStyle('width: 96%, float: left'));
+ menu.tStyle(new TStyle('width: 96%;float: left;margin: 2%;padding: 0;border-top: 3px solid #AABAAF;border-right: 3px solid #AABAAF;border-bottom: 3px solid #AABAAF;background: #DDEADF;font-size: 112.5%;'));
  menu.setAttribute('id', 'menu');
  var list = menu.append('ul');
  var l1 = list.append('li');
