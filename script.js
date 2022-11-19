@@ -15,6 +15,7 @@ const HOME = new Page("LL-10", true, ()=>{
  var list = menu.append('ul');
  var l1 = list.append('li');
  var l2 = list.append('li');
+ l1.write('hello');
  var lb = l1.append('ul');
  var ll1 = lb.append('li')
  var othello = ll1.append('a');
