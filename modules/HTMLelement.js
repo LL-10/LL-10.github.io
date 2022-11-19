@@ -57,6 +57,14 @@ class HTMLelement {
     clearStyle() {
         this.#main.style = null;
     }
+    tStyle(template, reset=false) {
+        if (reset) {
+            this.clearStyle();
+        }
+        for (let key in template) {
+            this.setStyle(key, template[key]);
+        }
+    }
     remove() {
         this.#main.remove();
     }
