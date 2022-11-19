@@ -8,3 +8,5 @@ class StyleTemplate {
     }
   }
 }
+
+export default StyleTemplate
