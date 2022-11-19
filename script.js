@@ -16,7 +16,7 @@ const HOME = new Page("LL-10", true, ()=>{
  var l1 = list.append('li');
  var l2 = list.append('li');
  var othello = l1.append('a');
- othello.setAttribute('href', './othello/othello.html');
+ othello.setAttribute('href', './othello');
  othello.init('Othello');
 });
 HOME.build();
