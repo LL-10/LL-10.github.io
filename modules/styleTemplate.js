@@ -1,5 +1,9 @@
 class StyleTemplate {
-  constructor(object) {
-    
+  constructor(input) {
+    if (typeof input=='object') {
+      
+    } else {
+      
+    }
   }
 }
