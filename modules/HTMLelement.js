@@ -1,5 +1,4 @@
 import Color from './library/Color.js';
-import Tstyle from './styleTemplate.js';
 
 class HTMLelement {
     #main;
