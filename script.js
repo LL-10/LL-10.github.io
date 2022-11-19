@@ -1,6 +1,7 @@
 import './modules/default.js';
 import {html, head, title, body} from './modules/HTMLelement.js';
 import Page from './modules/HTMLpage.js';
+import Tstyle from './modules/styleTemplate.js';
 
 const HOME = new Page("LL-10", true, ()=>{
  var link1 = head.append('link');
