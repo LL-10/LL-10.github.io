@@ -1,3 +1,5 @@
 class StyleTemplate {
-  
+  constructor(object) {
+    
+  }
 }
