@@ -9,4 +9,4 @@ class StyleTemplate {
   }
 }
 
-export default StyleTemplate
+export default StyleTemplate;
