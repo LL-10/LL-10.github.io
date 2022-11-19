@@ -6,17 +6,18 @@ import HEX from './modules/colors.js';
 const HOME = new Page("LL-10", true, ()=>{
  var link1 = head.append('link');
  var link2 = head.append('link');
- link1.setAttribute("rel", "stylesheet");
- link1.setAttribute("href", "https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
- link2.setAttribute("rel", "stylesheet");
- link2.setAttribute("href", "./style/menu.css");
+ link1.setAttribute('rel', 'stylesheet');
+ link1.setAttribute('href', 'https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+ link2.setAttribute('rel', 'stylesheet');
+ link2.setAttribute('href', './style/menu.css');
  var menu = body.append('div');
- menu.id = "menu";
+ menu.id = 'menu';
  var list = menu.append('ul');
- var othello = list.append('li');
+ var l1 = list.append('li');
  var l2 = list.append('li');
- othello.setAttribute("href", "./othello/othello.html");
- othello.init("Othello");
+ var othello = list.append('a');
+ othello.setAttribute('href', './othello/othello.html');
+ othello.init('Othello');
 });
 HOME.build();
 
