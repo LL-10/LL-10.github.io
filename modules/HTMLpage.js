@@ -12,7 +12,6 @@ class HTMLpage {
    if (this.#reset) {
     body.clear();
    }
-  }
    this.#build();
    document.title = this.#title;
   }
