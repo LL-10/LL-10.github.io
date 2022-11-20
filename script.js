@@ -23,7 +23,7 @@ const HOME = new Page("LL-10", true, ()=>{
  othello.setAttribute('href', './othello');
  othello.init('Othello');
 });
-HOME();
+HOME.build();
 
 
 /*
