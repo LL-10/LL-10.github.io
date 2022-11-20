@@ -8,14 +8,14 @@ class HTMLpage {
   this.#title = title;
   this.#reset = !!reset;
   this.#build = contents;
- }
- build() {
-  if (this.#reset) {
-   body.clear();
+  return function build() {
+   if (this.#reset) {
+    body.clear();
+   }
   }
-  this.#build();
-  document.title = this.#title;
- }
+   this.#build();
+   document.title = this.#title;
+  }
 }
 
 export default HTMLpage;
