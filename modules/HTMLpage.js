@@ -8,7 +8,7 @@ class HTMLpage {
   this.#title = title;
   this.#reset = !!reset;
   this.#build = contents;
-  return () => {
+  return new Function({
    if (this.#reset) {
     body.clear();
    }
