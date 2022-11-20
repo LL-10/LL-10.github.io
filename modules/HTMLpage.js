@@ -8,13 +8,13 @@ class HTMLpage {
   this.#title = title;
   this.#reset = !!reset;
   this.#build = contents;
-  return new Function({
-   if (this.#reset) {
-    body.clear();
-   }
-   this.#build();
-   document.title = this.#title;
-  });
+ }
+ build() {
+  if (this.#reset) {
+   body.clear();
+  }
+  this.#build();
+  document.title = this.#title;
  }
 }
 
