@@ -14,7 +14,7 @@ class HTMLpage {
    }
    this.#build();
    document.title = this.#title;
-  })
+  });
  }
 }
 
