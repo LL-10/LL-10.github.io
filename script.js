@@ -6,10 +6,14 @@ import TStyle from './modules/StyleTemplate.js';
 const HOME = new Page("LL-10", true, ()=>{
  var link1 = head.append('link');
  var link2 = head.append('link');
+ var icon = head.append('link');
  link1.setAttribute('rel', 'stylesheet');
  link1.setAttribute('href', 'https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
  link2.setAttribute('rel', 'stylesheet');
  link2.setAttribute('href', './style/menu.css');
+ icon.setAttribute('rel', 'icon');
+ icon.setAttribute('type', 'image/png');
+ icon.setAttribute('href', 'Resources/main/icon.png');
  var menu = body.append('div');
  menu.tStyle(new TStyle('width: 96%; float: left; margin: 2%; padding: 0; border-top: 3px solid #AABAAF; border-right: 3px solid #AABAAF; border-bottom: 3px solid #AABAAF; background: #DDEADF; font-size: 112.5%;'));
  menu.setAttribute('id', 'menu');
