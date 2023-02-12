@@ -1,0 +1,127 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXFileReference section */
+		ED775BB129671E3C00EFB482 /* HTMLPage.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = HTMLPage.js; sourceTree = "<group>"; };
+		ED775BB22969CA6A00EFB482 /* HTMLTemplate.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = HTMLTemplate.js; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
+		EDB4015C295650A30014991C /* XMLElement.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = XMLElement.js; sourceTree = "<group>"; };
+		EDB4015D295650AA0014991C /* SVGElement.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = SVGElement.js; sourceTree = "<group>"; };
+		EDB4015E295650B00014991C /* Random.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Random.js; sourceTree = "<group>"; };
+		EDB4015F295650B60014991C /* HTMLElement.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = HTMLElement.js; sourceTree = "<group>"; };
+		EDB40161295651E90014991C /* Object display.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; lineEnding = 0; path = "Object display.js"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		EDB401332954662A0014991C = {
+			isa = PBXGroup;
+			children = (
+				EDB4014729549ABA0014991C /* JS(num) */,
+				EDB40160295651B70014991C /* JS(debug) */,
+				EDB4014129546AF50014991C /* XML:JS */,
+				EDB40145295495A50014991C /* HTML:JS */,
+				EDB40143295481510014991C /* SVG:JS */,
+			);
+			sourceTree = "<group>";
+			usesTabs = 0;
+			wrapsLines = 1;
+		};
+		EDB4014129546AF50014991C /* XML:JS */ = {
+			isa = PBXGroup;
+			children = (
+				EDB4015C295650A30014991C /* XMLElement.js */,
+			);
+			path = "XML:JS";
+			sourceTree = "<group>";
+		};
+		EDB40143295481510014991C /* SVG:JS */ = {
+			isa = PBXGroup;
+			children = (
+				EDB4015D295650AA0014991C /* SVGElement.js */,
+			);
+			path = "SVG:JS";
+			sourceTree = "<group>";
+		};
+		EDB40145295495A50014991C /* HTML:JS */ = {
+			isa = PBXGroup;
+			children = (
+				EDB4015F295650B60014991C /* HTMLElement.js */,
+				ED775BB129671E3C00EFB482 /* HTMLPage.js */,
+				ED775BB22969CA6A00EFB482 /* HTMLTemplate.js */,
+			);
+			path = "HTML:JS";
+			sourceTree = "<group>";
+		};
+		EDB4014729549ABA0014991C /* JS(num) */ = {
+			isa = PBXGroup;
+			children = (
+				EDB4015E295650B00014991C /* Random.js */,
+			);
+			path = "JS(num)";
+			sourceTree = "<group>";
+		};
+		EDB40160295651B70014991C /* JS(debug) */ = {
+			isa = PBXGroup;
+			children = (
+				EDB40161295651E90014991C /* Object display.js */,
+			);
+			path = "JS(debug)";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		EDB401342954662A0014991C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1320;
+			};
+			buildConfigurationList = EDB401372954662A0014991C /* Build configuration list for PBXProject "DevLib" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EDB401332954662A0014991C;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		EDB401382954662A0014991C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		EDB401392954662A0014991C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDB401372954662A0014991C /* Build configuration list for PBXProject "DevLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDB401382954662A0014991C /* Debug */,
+				EDB401392954662A0014991C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDB401342954662A0014991C /* Project object */;
+}
