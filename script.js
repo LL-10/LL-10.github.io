@@ -16,7 +16,18 @@ void async function main() {
 		const body = html.append('body');
 		const menu = body.append('div', null, {
 			id: 'menu',
-			//'style*': null
+			'style*': null
+		});
+		Object.defineProperties(menu.style, {
+				width: '96%',
+				float: 'left',
+				margin: '2%',
+				padding: '0',
+				border-top: '3px solid #AABAAF',
+				border-right: '3px solid #AABAAF',
+				border-bottom: '3px solid #AABAAF',
+				background: '#DDEADF',
+				font-size: '112.5%'
 		});
 		//menu.style = 'width: 96%; float: left; margin: 2%; padding: 0; border-top: 3px solid #AABAAF; border-right: 3px solid #AABAAF; border-bottom: 3px solid #AABAAF; background: #DDEADF; font-size: 112.5%;';
 		const list = menu.append('ul');
