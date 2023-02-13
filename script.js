@@ -1,7 +1,7 @@
 void async function main() {
 	try {
 		const HTMLElement = await (await import './DevLib/HTML:JS/HTMLElement.js');
-		const body = new HTMLElement(document.body);
+		const html = new HTMLElement(document.documentElement);
 		const head = new HTMLElement(document.head);
 		const icon = head.append('link', null, {
 			rel: 'icon',
@@ -13,6 +13,7 @@ void async function main() {
 			type: 'text/css',
 			href: './style/menu.css'
 		});
+		const body = html.append('body');
 		const menu = body.append('div', null, {
 			id: 'menu',
 			'style*': null
