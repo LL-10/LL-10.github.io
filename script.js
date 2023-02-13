@@ -19,15 +19,33 @@ void async function main() {
 			'style*': null
 		});
 		Object.defineProperties(menu.style, {
-				width: '96%',
-				float: 'left',
-				margin: '2%',
-				padding: '0',
-				border-top: '3px solid #AABAAF',
-				border-right: '3px solid #AABAAF',
-				border-bottom: '3px solid #AABAAF',
-				background: '#DDEADF',
-				font-size: '112.5%'
+			width: {
+				value: '96%'
+			},
+			float: {
+				value: 'left'
+			},
+			margin: {
+				value: '2%'
+			},
+			padding: {
+				value: '0'
+			},
+			border-top: {
+				value: '3px solid #AABAAF'
+			},
+			border-right: {
+				value: '3px solid #AABAAF'
+			},
+			border-bottom: {
+				value: '3px solid #AABAAF'
+			},
+			background: {
+				value: '#DDEADF'
+			},
+			font-size: {
+				value: '112.5%'
+			}
 		});
 		//menu.style = 'width: 96%; float: left; margin: 2%; padding: 0; border-top: 3px solid #AABAAF; border-right: 3px solid #AABAAF; border-bottom: 3px solid #AABAAF; background: #DDEADF; font-size: 112.5%;';
 		const list = menu.append('ul');
