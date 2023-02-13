@@ -20,7 +20,7 @@ void async function main() {
 		});
 		menu.style = 'width: 96%; float: left; margin: 2%; padding: 0; border-top: 3px solid #AABAAF; border-right: 3px solid #AABAAF; border-bottom: 3px solid #AABAAF; background: #DDEADF; font-size: 112.5%;';
 		const list = menu.append('ul');
-		const l1 = list.append('li').write(hello);
+		const l1 = list.append('li').write('hello');
 		const l2 = list.append('li');
 		const lb = l1.append('ul');
 		const ll1 = lb.append('li')
