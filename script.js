@@ -18,7 +18,7 @@ void async function main() {
 			id: 'menu',
 			'style*': null
 		});
-		Object.defineProperties(menu.style, {
+		/*Object.defineProperties(menu.style, {
 			width: {
 				value: '96%'
 			},
@@ -46,7 +46,7 @@ void async function main() {
 			font-size: {
 				value: '112.5%'
 			}
-		});
+		});*/
 		//menu.style = 'width: 96%; float: left; margin: 2%; padding: 0; border-top: 3px solid #AABAAF; border-right: 3px solid #AABAAF; border-bottom: 3px solid #AABAAF; background: #DDEADF; font-size: 112.5%;';
 		const list = menu.append('ul');
 		const l1 = list.append('li').write('hello');
