@@ -1,6 +1,6 @@
 void async function main() {
 	try {
-		const HTMLElement = await (await import './DevLib/HTML:JS/HTMLElement.js');
+		const HTMLElement = await (await import('./DevLib/HTML:JS/HTMLElement.js')).default();
 		const html = new HTMLElement(document.documentElement);
 		const head = new HTMLElement(document.head);
 		const icon = head.append('link', null, {
