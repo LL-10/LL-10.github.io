@@ -28,6 +28,6 @@ void async function main() {
 			href: './othello',
 		}).write('Othello');
 	} catch (e) {
-		alert (e)
+		alert (e);
 	}
 }();
