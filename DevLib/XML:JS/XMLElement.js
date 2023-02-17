@@ -11,7 +11,10 @@ export default async function() {
     setters.forEach(property => {
      var key, value;
      if(Array.isArray(property)) [key, value] = property;
-     else key = property;
+     else {
+      key = property;
+      value = null;
+     }
      if(key.slice(-1) == "*") {
       key = key.slice(0, -1);
       setters.storage[key] = {
