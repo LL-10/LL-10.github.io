@@ -1,1 +1,1 @@
-<!ELEMENT root>
+<!ELEMENT root (hello)>
