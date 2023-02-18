@@ -1,1 +1,1 @@
-<!ELEMENT root (hello)>
+<!ELEMENT root #PCDATA>
