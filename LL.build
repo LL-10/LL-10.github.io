@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+shopt -s extglob
+hi=$(cat "./DevLib/XML:JS/XMLElement.js")
+echo "$hi" >> hi

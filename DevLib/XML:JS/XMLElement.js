@@ -43,6 +43,9 @@ export default async function() {
   get XMLObject() {
    return this.#main;
   }
+  get XMLString() {
+   return new XMLSerializer().serializeToString(this.#main);
+  }
   append(tag, next = null, setters = null, namespace = this.#namespace || null) {
    if (next != null && next.constructor == this.constructor) next = next.XMLObject;
    return new this.constructor(this.#main.insertBefore(document.createElementNS(namespace, tag), next), setters);
@@ -58,10 +61,10 @@ export default async function() {
   remove() {
    this.#main.remove();
   }
-  on(event,action,...options) {
+  on(event, action, ...options) {
    let obj = {};
    options.map(o=>obj[o]=true);
-   this.#main.addEventListener(event,action,obj);
+   this.#main.addEventListener(event, action, obj);
    return this;
   }
  }

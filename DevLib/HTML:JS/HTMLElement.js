@@ -14,6 +14,9 @@ export default async function() {
   get HTMLObject() {
    return super.XMLObject;
   }
+  get HTMLString() {
+   return super.HTMLString;
+  }
   append(tag, next = null, setters = null) {
    return this.appendNS(tag, next, setters, this.#namespace);
   }
