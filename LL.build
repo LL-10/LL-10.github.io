@@ -9,4 +9,6 @@ XMLElement=$(extract "${DEVLIB}XML:JS/XMLElement.js")
 XMLPage=$(extract "${DEVLIB}XML:JS/XMLPage.js")
 HTMLElement=$(extract "${DEVLIB}HTML:JS/HTMLElement.js")
 SVGElement=$(extract "${DEVLIB}SVG:JS/SVGElement.js")
-echo -e $ObjectDisplay\n$Random\n$XMLElement\n$XMLPage\n$HTMLElement\n$SVGElement > LL
+echo  $ObjectDisplay > LL
+echo -e \n >> LL
+echo $Random$XMLElement$XMLPage$HTMLElement$SVGElement >> LL
