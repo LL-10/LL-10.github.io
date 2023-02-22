@@ -13,4 +13,4 @@ XMLDocument=$(extract "${DEVLIB}XML:JS/XMLDocument.js")
 HTMLElement=$(extract "${DEVLIB}HTML:JS/HTMLElement.js")
 HTMLDocument=$(extract "${DEVLIB}HTML:JS/HTMLDocument.js")
 SVGElement=$(extract "${DEVLIB}SVG:JS/SVGElement.js")
-echo "$ObjectDisplay$Random$XMLElement$XMLDocument$HTMLElement$HTMLDocumentSVGElement" > LL
+echo "$ObjectDisplay$Random$XMLElement$XMLDocument$HTMLElement$HTMLDocument$SVGElement" > LL
