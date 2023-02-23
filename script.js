@@ -18,7 +18,9 @@ const main = new HTMLDocument((body, head) => {
 	const l2 = list.append('li');
 	const lb = l1.append('ul');
 	const ll1 = lb.append('li')
-	const othelloButton = ll1.append('a', null).write('Othello').on('click', () => {
+	const othelloButton = ll1.append('a', null, {
+		href: 'javascript:void(0)',
+	}).write('Othello').on('click', () => {
 		othello.load();
 	});
 }, 'LL');
