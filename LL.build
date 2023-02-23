@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-DEVLIB="./DevLib/"
+DEVLIB="../DevLib/"
 linearize () {
 	echo "$(cat $1 | tr '\n' ' ' | tr -s ' ' | sed 's/[[:space:]]*$//')"
 }
