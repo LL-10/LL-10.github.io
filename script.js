@@ -18,8 +18,11 @@ const main = new HTMLDocument((body, head) => {
 	const l2 = list.append('li');
 	const lb = l1.append('ul');
 	const ll1 = lb.append('li')
-	const othello = ll1.append('a', null, {
-		href: './othello',
-	}).write('Othello');
-}, "LL");
+	const othelloButton = ll1.append('a', null).write('Othello').on('click', () => {
+		othello.load();
+	});
+}, 'LL');
+const othello = new HTMLDocument((body) => {
+	body.write('work in progress');
+}, 'LL - Othello');
 main.load();
