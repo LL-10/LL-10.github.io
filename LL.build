@@ -8,6 +8,7 @@ extract () {
 }
 ObjectDisplay=$(cat "${DEVLIB}JS(debug)/Object display.js" | linearize)
 Random=$(extract "${DEVLIB}JS(math)/Random.js")
+windowOn=$(cat "${DEVLIB}DOM:JS/window on.js" | linearize)
 XMLElement=$(extract "${DEVLIB}XML:JS/XMLElement.js")
 XMLDocument=$(extract "${DEVLIB}XML:JS/XMLDocument.js")
 XMLFragment=$(extract "${DEVLIB}XML:JS/XMLFragment.js")
