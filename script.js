@@ -1,11 +1,21 @@
 document.palette = {
-	a: '#FFFDFB',
+	background: '#FFFDFB',
 	color: '#333333',
 	b: '#955555',
 	c: '#F9F2EF',
 };
-document.body.style.background = document.palette.a;
+document.body.style.background = document.palette.background;
 document.body.style.color = document.palette.color;
+
+const load = function(page) {
+	new HTMLDocument(body => {
+		body.write("Page loading");
+		
+	}, "LL - loading").load();
+	setTimeout(()=>{
+		page.load();
+	}, 1500);
+}
 
 const nav = new HTMLFragment((nav) => {
 	const box = nav.append('div', null, {
@@ -45,4 +55,4 @@ const othello = new HTMLDocument((body) => {
 	nav.use();
 	body.write('work in progress');
 }, 'LL - Othello');
-home.load();
+load(home);
