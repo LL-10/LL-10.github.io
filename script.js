@@ -1,3 +1,12 @@
+document.palette = {
+	a: '#FFFDFB',
+	color: '#333333',
+	b: '#955555',
+	c: '#F9F2EF',
+};
+document.body.style.background = document.palette.a;
+document.body.style.color = document.palette.color;
+
 const nav = new HTMLFragment((nav) => {
 	const box = nav.append('div', null, {
 		id: 'menu',
@@ -9,8 +18,12 @@ const nav = new HTMLFragment((nav) => {
 });
 	const l1 = menu.append('li').write('GAMES');
 	const submenu = l1.append('ul');
-	const OTHELLO = submenu.append('li').write('Othello').on('click', () => {
+	const OTHELLO = submenu.append('li', null, ['style*']).write('Othello').on('click', () => {
 		othello.load();
+	}).on('mouseover touchstart', () => {
+		OTHELLO.style.background = document.palette.b;
+	}).on('mouseout touchend', () => {
+		OTHELLO.style.background = document.palette.c;
 	});
 });
 
