@@ -8,11 +8,8 @@ const nav = new HTMLFragment((nav) => {
 		home.load();
 });
 	const l1 = menu.append('li').write('GAMES');
-	const lb = l1.append('ul');
-	const ll1 = lb.append('li')
-	const OTHELLO = ll1.append('a', null, {
-		href: 'javascript:void(0)',
-	}).write('Othello').on('click', () => {
+	const submenu = l1.append('ul');
+	const OTHELLO = submenu.append('li').write('Othello').on('click', () => {
 		othello.load();
 	});
 });
