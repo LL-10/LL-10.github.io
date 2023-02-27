@@ -14,7 +14,7 @@ const load = function(page) {
 	}, "LL - loading").load();
 	setTimeout(()=>{
 		page.load();
-	}, 1500);
+	}, 1200);
 }
 
 const nav = new HTMLFragment((nav) => {
@@ -24,12 +24,12 @@ const nav = new HTMLFragment((nav) => {
 	});
 	const menu = box.append('ul');
 	const HOME = menu.append('li').write('HOME').on('click', () => {
-		home.load();
+		load(home);
 });
 	const l1 = menu.append('li').write('GAMES');
 	const submenu = l1.append('ul');
 	const OTHELLO = submenu.append('li', null, ['style*']).write('Othello').on('click', () => {
-		othello.load();
+		load(othello);
 	}).on('mouseover touchstart', () => {
 		OTHELLO.style.background = document.palette.b;
 	}).on('mouseout touchend', () => {
