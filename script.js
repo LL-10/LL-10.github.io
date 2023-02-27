@@ -9,7 +9,7 @@ document.body.style.color = document.palette.color;
 
 const load = function(page) {
 	new HTMLDocument(body => {
-		body.write("Page loading");
+		body.write("Page loading...");
 		
 	}, "LL - loading").load();
 	setTimeout(()=>{
