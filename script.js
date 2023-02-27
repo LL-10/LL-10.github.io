@@ -30,6 +30,7 @@ const main = new HTMLDocument((body, head) => {
 	});
 	menu.use(body);
 }, 'LL');
+
 const othello = new HTMLDocument((body) => {
 	menu.use(body);
 	body.write('work in progress');
