@@ -1,13 +1,13 @@
-const menu = new HTMLFragment((menu) => {
-	const div = menu.append('div', null, {
+const nav = new HTMLFragment((nav) => {
+	const box = nav.append('div', null, {
 		id: 'menu',
 		'style*': null
 	});
-	const list = div.append('ul');
-	const l0 = list.append('li').write('HOME').on('click', () => {
+	const menu = box.append('ul');
+	const l0 = menu.append('li').write('HOME').on('click', () => {
 	main.load();
 });
-	const l1 = list.append('li').write('GAMES');
+	const l1 = menu.append('li').write('GAMES');
 	const lb = l1.append('ul');
 	const ll1 = lb.append('li')
 	const othelloButton = ll1.append('a', null, {
@@ -28,11 +28,11 @@ const main = new HTMLDocument((body, head) => {
 		type: 'text/css',
 		href: './style/menu.css'
 	});
-	menu.use(body);
+	nav.use();
 }, 'LL');
 
 const othello = new HTMLDocument((body) => {
-	menu.use(body);
+	nav.use();
 	body.write('work in progress');
 }, 'LL - Othello');
 main.load();
