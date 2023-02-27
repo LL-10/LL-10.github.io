@@ -29,16 +29,6 @@ const main = new HTMLDocument((body, head) => {
 		href: './style/menu.css'
 	});
 	menu.use(body);
-	const video = body.append('video', null, ['srcObject', 'autoplay']);
-	navigator.mediaDevices.getUserMedia({
-		audio: false,
-		video: true
-	}).then(stream => {
-		video.srcObject = stream;
-		video.autoplay = true;
-		console.log(video.HTMLString)
-	})
-	
 }, 'LL');
 
 const othello = new HTMLDocument((body) => {
