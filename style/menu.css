@@ -1,9 +1,7 @@
 body {
 	padding: 0;
 	margin: 0;
-	background-color: #FCFFFB;
 	font-family: 'Open sans', sans-serif;
-	color: #336333;
 }
 
 div#menu ul {
@@ -32,7 +30,7 @@ div#menu a {
 }
 
 div#menu a:hover {
-	background-color: #335333;
+	background-color: #559555;
 	color: #FFFFFF;
 	text-decoration: none;
 }
