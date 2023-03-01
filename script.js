@@ -1,10 +1,10 @@
 document.palette = {
 	background: '#FFEOEO',
 	color: '#420D09',
-	grey: '#F7B6B6',
+	light: '#F7B6B6',
 	red: '#D90F0F',
-	b: '#955555',
-	c: '#F9F2EF',
+	b: '#B71C10',
+	c: '#EC7575',
 };
 document.body.style.background = document.palette.background;
 document.body.style.color = document.palette.color;
@@ -32,7 +32,7 @@ const load = function(page) {
 		loader.style.height = x + 'px';
 		loader.style.margin = '-' + ( x / 2 + bord ) + 'px 0 0 -' + ( x / 2 + bord ) + 'px';
 		loader.style.borderRadius = '50%';
-		loader.style.border = bord + 'px solid ' + document.palette.grey;
+		loader.style.border = bord + 'px solid ' + document.palette.light;
 		loader.style.borderTop = bord + 'px solid ' + document.palette.red;
 		loader.style.transition = 'transform linear 1200ms';
 		setTimeout(()=>{
