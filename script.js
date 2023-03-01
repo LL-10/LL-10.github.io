@@ -59,7 +59,7 @@ const nav = new HTMLFragment(nav => {
 		load(othello);
 	}).on('mouseover touchstart', () => {
 		OTHELLO.style.background = document.palette.b;
-	}).on('mouseout touchend', () => {
+	}).on('mouseout touchend touchleave touchcancel', () => {
 		OTHELLO.style.background = document.palette.c;
 	});
 });
