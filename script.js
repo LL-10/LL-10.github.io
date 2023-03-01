@@ -1,6 +1,6 @@
 document.palette = {
 	background: '#FFFDFB',
-	color: '#333333',
+	color: '#420d09',
 	grey: '#f3f3f3',
 	red: '#E9A29F',
 	b: '#955555',
