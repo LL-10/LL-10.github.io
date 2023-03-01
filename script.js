@@ -1,8 +1,8 @@
 document.palette = {
-	background: '#FFFDFB',
-	color: '#420d09',
-	grey: '#f3f3f3',
-	red: '#E9A29F',
+	background: '#FFEOEO',
+	color: '#420D09',
+	grey: '#F7B6B6',
+	red: '#D90F0F',
 	b: '#955555',
 	c: '#F9F2EF',
 };
