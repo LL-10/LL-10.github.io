@@ -50,8 +50,6 @@ const nav = new HTMLFragment(nav => {
 		'style*': null
 	});
 	const menu = box.append('ul', null, ['style*']);
-	menu.style.listStyleType = 'none';
-	menu.style.display = 'flex';
 	const HOME = menu.append('li').write('HOME').on('click', () => {
 		load(home);
 });
