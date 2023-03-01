@@ -54,7 +54,7 @@ const nav = new HTMLFragment(nav => {
 		load(home);
 });
 	const l1 = menu.append('li').write('GAMES');
-	const submenu = l1.append('ul');
+	const submenu = l1.append('ul', null, ['style*']);
 	const OTHELLO = submenu.append('li', null, ['style*']).write('Othello').on('click', () => {
 		load(othello);
 	}).on('mouseover touchstart', () => {
@@ -62,6 +62,7 @@ const nav = new HTMLFragment(nav => {
 	}).on('mouseout touchend touchleave touchcancel', () => {
 		OTHELLO.style.background = document.palette.back;
 	});
+	OTHELLO.style.background = document.palette.back;
 });
 
 const home = new HTMLDocument(body => {
