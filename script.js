@@ -3,8 +3,8 @@ document.palette = {
 	color: '#420D09',
 	light: '#F7B6B6',
 	red: '#D90F0F',
-	b: '#B71C10',
-	c: '#EC7575',
+	hover: '#B71C10',
+	back: '#EC7575',
 };
 document.body.style.background = document.palette.background;
 document.body.style.color = document.palette.color;
@@ -58,9 +58,9 @@ const nav = new HTMLFragment(nav => {
 	const OTHELLO = submenu.append('li', null, ['style*']).write('Othello').on('click', () => {
 		load(othello);
 	}).on('mouseover touchstart', () => {
-		OTHELLO.style.background = document.palette.b;
+		OTHELLO.style.background = document.palette.hover;
 	}).on('mouseout touchend touchleave touchcancel', () => {
-		OTHELLO.style.background = document.palette.c;
+		OTHELLO.style.background = document.palette.back;
 	});
 });
 
