@@ -1,16 +1,3 @@
-body {
-	padding: 0;
-	margin: 0;
-	font-family: 'Open sans', sans-serif;
-}
-
-div#menu ul {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	display: flex;
-}
-
 div#menu li {
 	width:100%;
 	float:left;
