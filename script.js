@@ -18,18 +18,18 @@ document.body.style.padding = '1px';
 
 const load = function(page) {
 	new HTMLDocument((body, head) => {
-		const icon = head.append('link', null, {
+		const icon = head.append('link', {
 			rel: 'icon',
 			type: 'image/png',
 			href: './Resources/main/icon.png'
 		});
-		const style = head.append('link', null, {
+		const style = head.append('link', {
 			rel: 'stylesheet',
 			type: 'text/css',
 			href: './style/menu.css'
 		});
 		nav.use();
-		const loader = body.append('div', null, ['style*']);
+		const loader = body.append('div', ['style*']);
 		const x = 40;
 		const bord = 14;
 		loader.style.position = 'absolute';
@@ -52,23 +52,23 @@ const load = function(page) {
 }
 
 const nav = new HTMLFragment(nav => {
-	const box = nav.append('div', null, {
+	const box = nav.append('div', {
 		id: 'menu',
 		'style*': null,
 	});
-	const menu = box.append('ul', null, ['style*']);
+	const menu = box.append('ul', ['style*']);
 	menu.style.listStyleType = 'none';
 	menu.style.display = 'flex';
 	menu.style.margin = '0';
 	menu.style.padding = '0';
 	menu.style.background = document.palette.back;
-	const HOME = menu.append('li', null, ['style*']).write('HOME').on('click', () => {
+	const HOME = menu.append('li', ['style*']).write('HOME').on('click', () => {
 		load(home);
 });
 	HOME.style.width = '100%';
-	const l1 = menu.append('li', null, ['style*']).write('GAMES');
+	const l1 = menu.append('li', ['style*']).write('GAMES');
 	l1.style.width = '100%';
-	const submenu = l1.append('ul', null, ['style*']);
+	const submenu = l1.append('ul', ['style*']);
 	submenu.style.listStyleType = 'none';
 	submenu.style.display = 'none';
 	submenu.style.flexDirection = 'column';
@@ -86,7 +86,7 @@ const nav = new HTMLFragment(nav => {
 	}).on('mouseout touchleave touchcancel' , () => {
 		submenu.style.display = 'none';
 	});
-	const OTHELLO = submenu.append('li', null, ['style*']).write('Othello').on('click', () => {
+	const OTHELLO = submenu.append('li', ['style*']).write('Othello').on('click', () => {
 		load(othello);
 	}).on('mouseover touchstart', () => {
 		OTHELLO.style.background = document.palette.hover;
