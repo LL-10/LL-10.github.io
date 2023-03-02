@@ -1,13 +1,20 @@
 document.palette = {
 	background: '#FFEOEO',
-	color: '#420D09',
 	light: '#F7B6B6',
-	red: '#D90F0F',
-	hover: '#B71C10',
 	back: '#EC7575',
+	coral: '#E34242',
+	red: '#D90F0F',
+	red2: '#C81610',
+	hover: '#B71C10',
+	dark: '#571409',
+	color: '#420D09',
 };
-document.body.style.background = document.palette.background;
+document.documentElement.style.background = document.palette.background;
+document.body.style.background = 'inherit';
 document.body.style.color = document.palette.color;
+document.body.style.fontFamily = 'sans-serif';
+document.body.style.margin = '0';
+document.body.style.padding = '0';
 
 const load = function(page) {
 	new HTMLDocument((body, head) => {
@@ -47,9 +54,13 @@ const load = function(page) {
 const nav = new HTMLFragment(nav => {
 	const box = nav.append('div', null, {
 		id: 'menu',
-		'style*': null
+		'style*': null,
 	});
 	const menu = box.append('ul', null, ['style*']);
+	menu.style.listStyleType = 'none';
+	menu.style.display = 'flex';
+	menu.style.margin = '0';
+	menu.style.padding = '0';
 	const HOME = menu.append('li').write('HOME').on('click', () => {
 		load(home);
 });
