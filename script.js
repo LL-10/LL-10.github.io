@@ -14,7 +14,7 @@ document.body.style.background = 'inherit';
 document.body.style.color = document.palette.color;
 document.body.style.fontFamily = 'sans-serif';
 document.body.style.margin = '0';
-document.body.style.padding = '0';
+document.body.style.padding = '1px';
 
 const load = function(page) {
 	new HTMLDocument((body, head) => {
