@@ -1,7 +1,7 @@
 div#menu li {
 	margin: 0;
 	padding: 0;
-	border-left: 3px solid #C81610;
+	border-left: 3px solid #571409;
 	color: inherit;
 }
 
@@ -9,7 +9,7 @@ div#menu li li {
 	border-top: none;
 	border-right: none;
 	border-left: none;
-	border-bottom: 1px solid #336333;
+	border-bottom: 1px solid #571409;
 	width:100%;
 }
 
