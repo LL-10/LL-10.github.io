@@ -80,9 +80,9 @@ const nav = new HTMLFragment(nav => {
 	submenu.style.borderRight = '1px solid #' + document.palette.dark;
 	submenu.style.borderLeft = '1px solid #' + document.palette.dark;
 	submenu.style.background = document.palette.back;
-	l1.on('mouseover touchstart', () => {
+	l1.on('mouseover touchstart hover', () => {
 		submenu.style.display = 'flex';
-	}).on('mouseout touchend touchleave touchcancel' , () => {
+	}).on('mouseout touchleave touchcancel' , () => {
 		submenu.style.display = 'none';
 	});
 	const OTHELLO = submenu.append('li', null, ['style*']).write('Othello').on('click', () => {
