@@ -61,6 +61,7 @@ const nav = new HTMLFragment(nav => {
 	menu.style.display = 'flex';
 	menu.style.margin = '0';
 	menu.style.padding = '0';
+	menu.style.background = document.palette.back;
 	const HOME = menu.append('li', null, ['style*']).write('HOME').on('click', () => {
 		load(home);
 });
