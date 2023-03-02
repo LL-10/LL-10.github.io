@@ -61,11 +61,30 @@ const nav = new HTMLFragment(nav => {
 	menu.style.display = 'flex';
 	menu.style.margin = '0';
 	menu.style.padding = '0';
-	const HOME = menu.append('li').write('HOME').on('click', () => {
+	const HOME = menu.append('li', null, ['style*']).write('HOME').on('click', () => {
 		load(home);
 });
-	const l1 = menu.append('li').write('GAMES');
+	HOME.style.width = '100%';
+	const l1 = menu.append('li', null, ['style*']).write('GAMES');
+	l1.style.width = '100%';
 	const submenu = l1.append('ul', null, ['style*']);
+	submenu.style.listStyleType = 'none';
+	submenu.style.display = 'none';
+	submenu.style.flexDirection = 'column';
+	submenu.style.position = 'absolute';
+	submenu.style.zIndex = '1';
+	submenu.style.width = '150px';
+	submenu.style.padding = '0';
+	submenu.style.margin = '0 0 0 -1px';
+	submenu.style.borderTop = '1px solid #' + document.palette.dark;
+	submenu.style.borderRight = '1px solid #' + document.palette.dark;
+	submenu.style.borderLeft = '1px solid #' + document.palette.dark;
+	submenu.style.background = document.palette.back;
+	l1.on('mouseover touchstart', () => {
+		submenu.style.display = 'flex';
+	}).on('mouseout touchend touchleave touchcancel' , () => {
+		submenu.style.display = 'none';
+	});
 	const OTHELLO = submenu.append('li', null, ['style*']).write('Othello').on('click', () => {
 		load(othello);
 	}).on('mouseover touchstart', () => {
