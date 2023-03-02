@@ -93,6 +93,7 @@ const nav = new HTMLFragment(nav => {
 	}).on('mouseout touchend touchleave touchcancel', () => {
 		OTHELLO.style.background = document.palette.back;
 	});
+	OTHELLO.style.background = 'inherit';
 });
 
 const home = new HTMLDocument(body => {
