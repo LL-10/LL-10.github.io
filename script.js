@@ -104,5 +104,8 @@ const home = new HTMLDocument(body => {
 const othello = new HTMLDocument(body => {
 	nav.use();
 	body.write('work in progress');
+	const restart = body.append('button', ['style*']).write('RESTART GAME');
+	const board = body.append('div', ['style*']);
+
 }, 'LL - Othello');
 load(home);
