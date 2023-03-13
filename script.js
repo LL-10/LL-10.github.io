@@ -65,11 +65,11 @@ const nav = new HTMLFragment(nav => {
 	const HOME = menu.append('li', ['style*']).write('HOME').on('click', () => {
 		load(home);
 });
-	HOME.style.width = '100%';
-	HOME.style.borderRight = '2px solid' + document.palette.dark;
 	const GAMES = menu.append('li', ['style*']).write('GAMES');
-	GAMES.style.width = '100%';
-	GAMES.style.borderRight = '2px solid' + document.palette.dark;
+	new Style({
+		width: '100%',
+		borderRight: '2px solid' + document.palette.dark,
+	}).apply(HOME).apply(GAMES);
 	const submenu = GAMES.append('ul', ['style*']);
 	submenu.style.listStyleType = 'none';
 	submenu.style.display = 'none';
