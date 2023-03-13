@@ -111,5 +111,8 @@ const othello = new HTMLDocument(body => {
 		othello.load();
 	});
 	const board = body.append('div', ['style*']);
+	new Style({
+		display: 'grid',
+	}).apply(board);
 }, 'LL - Othello');
 load(home);
