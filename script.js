@@ -53,6 +53,9 @@ const nav = new HTMLFragment(nav => {
 	menu.style.margin = '0';
 	menu.style.padding = '0';
 	menu.style.background = document.palette.back;
+	menu.style.borderTop = '2px solid' + document.palette.dark;
+	menu.style.borderLeft = '2px solid' + document.palette.dark;
+	menu.style.borderBottom = '2px solid' + document.palette.dark;
 	const HOME = menu.append('li', ['style*']).write('HOME').on('click', () => {
 		load(home);
 });
@@ -84,9 +87,7 @@ const nav = new HTMLFragment(nav => {
 		OTHELLO.style.background = document.palette.back;
 	});
 	OTHELLO.style.background = 'inherit';
-	OTHELLO.style.borderRight = '2px solid' + document.palette.dark;
-	OTHELLO.style.borderLeft = '2px solid' + document.palette.dark;
-	OTHELLO.style.borderBottom = '2px solid' + document.palette.dark;
+	OTHELLO.style.border = '2px solid' + document.palette.dark;
 });
 
 const home = new HTMLDocument(body => {
