@@ -50,10 +50,7 @@ const load = function(page) {
 }
 
 const nav = new HTMLFragment(nav => {
-	const box = nav.append('div', {
-		id: 'menu',
-		'style*': null,
-	});
+	const box = nav.append('div', ['style*']);
 	const menu = box.append('ul', ['style*']);
 	new Style({
 		listStyleType: 'none',
@@ -95,8 +92,10 @@ const nav = new HTMLFragment(nav => {
 	}).on('mouseout touchend touchleave touchcancel', () => {
 		OTHELLO.style.background = document.palette.back;
 	});
-	OTHELLO.style.background = 'inherit';
-	OTHELLO.style.border = '2px solid' + document.palette.dark;
+	new Style({
+		background: 'inherit',
+		border: '2px solid' + document.palette.dark,
+	}).apply(OTHELLO);
 });
 
 const home = new HTMLDocument(body => {
