@@ -19,16 +19,6 @@ document.body.style.padding = '1px';
 
 const load = function(page) {
 	new HTMLDocument((body, head) => {
-		const icon = head.append('link', {
-			rel: 'icon',
-			type: 'image/png',
-			href: './Resources/main/icon.png'
-		});
-		const style = head.append('link', {
-			rel: 'stylesheet',
-			type: 'text/css',
-			href: './style/menu.css'
-		});
 		nav.use();
 		const loader = body.append('div', ['style*']);
 		const x = 40;
@@ -67,9 +57,11 @@ const nav = new HTMLFragment(nav => {
 		load(home);
 });
 	HOME.style.width = '100%';
-	const l1 = menu.append('li', ['style*']).write('GAMES');
-	l1.style.width = '100%';
-	const submenu = l1.append('ul', ['style*']);
+	HOME.style.borderRight = '2px solid' + document.palette.dark;
+	const GAMES = menu.append('li', ['style*']).write('GAMES');
+	GAMES.style.width = '100%';
+	const submenu = GAMES.append('ul', ['style*']);
+	GAMES.style.borderRight = '2px solid' + document.palette.dark;
 	submenu.style.listStyleType = 'none';
 	submenu.style.display = 'none';
 	submenu.style.flexDirection = 'column';
@@ -78,11 +70,8 @@ const nav = new HTMLFragment(nav => {
 	submenu.style.width = '150px';
 	submenu.style.padding = '0';
 	submenu.style.margin = '0 0 0 -1px';
-	submenu.style.borderTop = '1px solid #' + document.palette.dark;
-	submenu.style.borderRight = '1px solid #' + document.palette.dark;
-	submenu.style.borderLeft = '1px solid #' + document.palette.dark;
 	submenu.style.background = document.palette.back;
-	l1.on('mouseover touchstart hover', () => {
+	GAMES.on('mouseover touchstart hover', () => {
 		submenu.style.display = 'flex';
 	}).on('mouseout touchleave touchcancel' , () => {
 		submenu.style.display = 'none';
@@ -95,6 +84,9 @@ const nav = new HTMLFragment(nav => {
 		OTHELLO.style.background = document.palette.back;
 	});
 	OTHELLO.style.background = 'inherit';
+	OTHELLO.style.borderRight = '2px solid' + document.palette.dark;
+	OTHELLO.style.borderLeft = '2px solid' + document.palette.dark;
+	OTHELLO.style.borderBottom = '2px solid' + document.palette.dark;
 });
 
 const home = new HTMLDocument(body => {
