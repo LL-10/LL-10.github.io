@@ -71,15 +71,17 @@ const nav = new HTMLFragment(nav => {
 		borderRight: '2px solid' + document.palette.dark,
 	}).apply(HOME).apply(GAMES);
 	const submenu = GAMES.append('ul', ['style*']);
-	submenu.style.listStyleType = 'none';
-	submenu.style.display = 'none';
-	submenu.style.flexDirection = 'column';
-	submenu.style.position = 'absolute';
-	submenu.style.zIndex = '1';
-	submenu.style.width = '150px';
-	submenu.style.padding = '0';
-	submenu.style.margin = '0 0 0 -2px';
-	submenu.style.background = document.palette.back;
+	new Style({
+		listStyleType: 'none',
+		display: 'none',
+		flexDirection: 'column',
+		position: 'absolute',
+		zIndex: '1',
+		width: '150px',
+		padding: '0',
+		margin: '0 0 0 -2px',
+		background: document.palette.back,
+	}).apply(submenu);
 	GAMES.on('mouseover touchstart hover', () => {
 		submenu.style.display = 'flex';
 	}).on('mouseout touchleave touchcancel' , () => {
