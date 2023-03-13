@@ -72,8 +72,8 @@ const nav = new HTMLFragment(nav => {
 	HOME.style.borderRight = '2px solid' + document.palette.dark;
 	const GAMES = menu.append('li', ['style*']).write('GAMES');
 	GAMES.style.width = '100%';
-	const submenu = GAMES.append('ul', ['style*']);
 	GAMES.style.borderRight = '2px solid' + document.palette.dark;
+	const submenu = GAMES.append('ul', ['style*']);
 	submenu.style.listStyleType = 'none';
 	submenu.style.display = 'none';
 	submenu.style.flexDirection = 'column';
