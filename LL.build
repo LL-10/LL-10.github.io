@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+cd "$(dirname "$0")"
 DEVLIB="../DevLib/"
 linearize () {
 	echo "$(cat $1 | tr '\n' ' ' | tr -s ' ' | sed 's/[[:space:]]*$//')"
