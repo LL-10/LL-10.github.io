@@ -10,12 +10,17 @@ document.palette = {
 	dark: '#571409',
 	color: '#420D09',
 };
-document.documentElement.style.background = document.palette.background;
-document.body.style.background = 'inherit';
-document.body.style.color = document.palette.color;
-document.body.style.fontFamily = 'sans-serif';
-document.body.style.margin = '0';
-document.body.style.padding = '1px';
+new Style({
+	background: document.palette.background,
+}).apply(document.documentElement);
+new Style({
+	background: 'inherit',
+	color: document.palette.color,
+	fontFamily: 'sans-serif',
+	margin: '0',
+	padding: '4px',
+}).apply(document.body);
+
 
 const load = function(page) {
 	new HTMLDocument((body, head) => {
@@ -72,7 +77,7 @@ const nav = new HTMLFragment(nav => {
 	submenu.style.zIndex = '1';
 	submenu.style.width = '150px';
 	submenu.style.padding = '0';
-	submenu.style.margin = '0 0 0 -1px';
+	submenu.style.margin = '0 0 0 -2px';
 	submenu.style.background = document.palette.back;
 	GAMES.on('mouseover touchstart hover', () => {
 		submenu.style.display = 'flex';
