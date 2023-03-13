@@ -10,6 +10,7 @@ document.palette = {
 	dark: '#571409',
 	color: '#420D09',
 };
+
 new Style({
 	background: document.palette.background,
 }).apply(document.documentElement);
@@ -21,23 +22,24 @@ new Style({
 	padding: '4px',
 }).apply(document.body);
 
-
 const load = function(page) {
 	new HTMLDocument((body, head) => {
 		nav.use();
 		const loader = body.append('div', ['style*']);
 		const x = 40;
 		const bord = 14;
-		loader.style.position = 'absolute';
-		loader.style.top = '50%';
-		loader.style.left = '50%';
-		loader.style.width = x + 'px';
-		loader.style.height = x + 'px';
-		loader.style.margin = '-' + ( x / 2 + bord ) + 'px 0 0 -' + ( x / 2 + bord ) + 'px';
-		loader.style.borderRadius = '50%';
-		loader.style.border = bord + 'px solid ' + document.palette.light;
-		loader.style.borderTop = bord + 'px solid ' + document.palette.red;
-		loader.style.transition = 'transform linear 1200ms';
+		new Style({
+			position: 'absolute',
+			top: '50%',
+			left: '50%',
+			width: x + 'px',
+			height: x + 'px',
+			margin: '-' + ( x / 2 + bord ) + 'px 0 0 -' + ( x / 2 + bord ) + 'px',
+			borderRadius: '50%',
+			border: bord + 'px solid ' + document.palette.light,
+			borderTop: bord + 'px solid ' + document.palette.red,
+			transition: 'transform linear 1200ms',
+		}).apply(loader);
 		setTimeout(()=>{
 			loader.style.transform = 'rotate(1.5turn)';
 		}, 2);
