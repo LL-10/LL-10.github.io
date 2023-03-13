@@ -55,14 +55,16 @@ const nav = new HTMLFragment(nav => {
 		'style*': null,
 	});
 	const menu = box.append('ul', ['style*']);
-	menu.style.listStyleType = 'none';
-	menu.style.display = 'flex';
-	menu.style.margin = '0';
-	menu.style.padding = '0';
-	menu.style.background = document.palette.back;
-	menu.style.borderTop = '2px solid' + document.palette.dark;
-	menu.style.borderLeft = '2px solid' + document.palette.dark;
-	menu.style.borderBottom = '2px solid' + document.palette.dark;
+	new Style({
+		listStyleType: 'none',
+		display: 'flex',
+		margin: '0',
+		padding: '0',
+		background: document.palette.back,
+		borderTop: '2px solid' + document.palette.dark,
+		borderLeft: '2px solid' + document.palette.dark,
+		borderBottom: '2px solid' + document.palette.dark,
+	}).apply(menu);
 	const HOME = menu.append('li', ['style*']).write('HOME').on('click', () => {
 		load(home);
 });
