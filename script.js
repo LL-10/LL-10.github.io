@@ -112,7 +112,20 @@ const othello = new HTMLDocument(body => {
 	});
 	const board = body.append('div', ['style*']);
 	new Style({
+		width: '300px',
+		height: '300px',
+		background: 'blue',
 		display: 'grid',
+		gap: '2px',
+		gridTemplateColumns: 'auto auto auto auto auto auto auto auto',
+		justifyContent: 'space around',
+		alignContent: 'space around',
 	}).apply(board);
+	for (let i = 0; i < 64; i++) {
+		const square = board.append('div', ['style*']);
+		new Style({
+			background: 'red',
+		}).apply(square);
+	}
 }, 'LL - Othello');
 load(home);
