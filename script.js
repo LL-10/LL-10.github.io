@@ -116,14 +116,20 @@ const othello = new HTMLDocument(body => {
 		height: '300px',
 		background: 'blue',
 		display: 'grid',
-		gap: '2px',
-		gridTemplateColumns: 'auto auto auto auto auto auto auto auto',
-		justifyContent: 'space around',
-		alignContent: 'space around',
+		grid: 'repeat(8, 11%) / repeat(8, 11%)',
+		placeItems: 'stretch',
+		placeContent: 'space-evenly',
 	}).apply(board);
-	for (let i = 0; i < 64; i++) {
+	for (let [i, j] = [0, 0]; i < 8; (() => {
+		j++;
+		if (j == 8) {
+			j = 0;
+			i++;
+		}
+	})()) {
 		const square = board.append('div', ['style*']);
 		new Style({
+			gridArea: i + '/' + j,
 			background: 'red',
 		}).apply(square);
 	}
