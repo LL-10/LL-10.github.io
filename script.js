@@ -12,9 +12,11 @@ document.palette = {
 };
 
 new Style({
+	height: '100%',
 	background: document.palette.background,
 }).apply(document.documentElement);
 new Style({
+	height: '100%',
 	background: 'inherit',
 	color: document.palette.color,
 	fontFamily: 'sans-serif',
@@ -112,9 +114,9 @@ const othello = new HTMLDocument(body => {
 	});
 	const board = body.append('div', ['style*']);
 	new Style({
-		width: '300px',
-		height: '300px',
-		background: 'blue',
+		width: '100%',
+		height: '60%',
+		background: document.palette.dark,//'#556655',//'EEFFEE',
 		display: 'grid',
 		grid: 'repeat(8, 11%) / repeat(8, 11%)',
 		placeItems: 'stretch',
@@ -130,7 +132,7 @@ const othello = new HTMLDocument(body => {
 		const square = board.append('div', ['style*']);
 		new Style({
 			gridArea: i + '/' + j,
-			background: 'red',
+			background: document.palette.light,//'#118822',
 		}).apply(square);
 	}
 }, 'LL - Othello');
