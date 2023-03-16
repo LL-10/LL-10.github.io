@@ -12,12 +12,24 @@ document.palette = {
 };
 
 document.text = {
-	title: {
-		home: 'LL',
-		loading: 'LL - loading',
-		othello: 'LL - Othello',
-	}
-}
+	load: {
+		title: 'LL - loading',
+	},
+	menu: {
+		HOME: {
+			button: 'HOME',
+		},
+		GAMES: {
+			button: 'GAMES',
+		}
+	},
+	home: {
+		title: 'LL',
+	},
+	othello: {
+		title: 'LL - Othello',
+	},
+};
 
 new Style({
 	width: '100vw',
@@ -62,7 +74,7 @@ const load = function(page) {
 		setTimeout(()=>{
 			loader.style.transform = 'rotate(1.5turn)';
 		}, 2);
-	}, document.text.title.loading).load();
+	}, document.text.load.title).load();
 	setTimeout(()=>{
 		page.load();
 	}, 1200);
@@ -83,10 +95,10 @@ const nav = new HTMLFragment(nav => {
 		borderLeft: '2px solid' + document.palette.dark,
 		borderBottom: '2px solid' + document.palette.dark,
 	}).apply(menu);
-	const HOME = menu.append('li', ['style*']).write('HOME').on('click', () => {
+	const HOME = menu.append('li', ['style*']).write(document.text.menu.HOME.button).on('click', () => {
 		load(home);
 });
-	const GAMES = menu.append('li', ['style*']).write('GAMES');
+	const GAMES = menu.append('li', ['style*']).write(document.text.menu.GAMES.button);
 	new Style({
 		flex: '1',
 		borderRight: '2px solid' + document.palette.dark,
@@ -123,7 +135,7 @@ const nav = new HTMLFragment(nav => {
 
 const home = new HTMLDocument(body => {
 	nav.use();
-}, document.text.title.home);
+}, document.text.home.title);
 
 const othello = new HTMLDocument(body => {
 	nav.use();
@@ -171,5 +183,5 @@ const othello = new HTMLDocument(body => {
 			background: document.palette.light,//'#118822',
 		}).apply(square);
 	}
-}, document.text.title.othello);
+}, document.text.othello.title);
 load(home);
