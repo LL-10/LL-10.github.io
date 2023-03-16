@@ -13,15 +13,22 @@ document.palette = {
 
 new Style({
 	height: '100%',
+	display: 'flex',
+	alignItems: 'stretch',
+	justifyContent: 'stretch',
+	overflow: 'hidden',
 	background: document.palette.background,
+	fontFamily: 'sans-serif',
 }).apply(document.documentElement);
 new Style({
-	height: '100%',
-	background: 'inherit',
-	color: document.palette.color,
-	fontFamily: 'sans-serif',
 	margin: '0',
 	padding: '4px',
+	flex: '1',
+	display: 'flex',
+	flexDirection: 'column',
+	overflow: 'scroll',
+	background: 'inherit',
+	color: document.palette.color,
 }).apply(document.body);
 
 const load = function(page) {
@@ -53,6 +60,9 @@ const load = function(page) {
 
 const nav = new HTMLFragment(nav => {
 	const box = nav.append('div', ['style*']);
+	new Style({
+		flex: '1',
+	}).apply(box);
 	const menu = box.append('ul', ['style*']);
 	new Style({
 		listStyleType: 'none',
@@ -69,7 +79,7 @@ const nav = new HTMLFragment(nav => {
 });
 	const GAMES = menu.append('li', ['style*']).write('GAMES');
 	new Style({
-		width: '100%',
+		flex: '1',
 		borderRight: '2px solid' + document.palette.dark,
 	}).apply(HOME).apply(GAMES);
 	const submenu = GAMES.append('ul', ['style*']);
@@ -116,19 +126,28 @@ const othello = new HTMLDocument(body => {
 	new Style({
 		width: '100%',
 		height: '100%',
+		display: 'flex',
+		alignItems: 'flex-start',
+		justifyContent: 'center',
 	}).apply(box);
-	const rect = box.HTMLObject.getBoundingClientRect();
-	const length = Math.min(rect.width, rect.height);
 	const board = box.append('div', ['style*']);
 	new Style({
-		width: length + 'px',
-		height: length + 'px',
-		background: document.palette.dark,//'#556655',//'EEFFEE',
 		display: 'grid',
 		grid: 'repeat(8, 11%) / repeat(8, 11%)',
 		placeItems: 'stretch',
 		placeContent: 'space-evenly',
+		background: document.palette.dark,//'#556655',//'EEFFEE',
 	}).apply(board);
+	box.resize = function() {
+		const rect = box.HTMLObject.getBoundingClientRect();
+		const length = Math.min(rect.width, rect.height);
+		new Style({
+		width: length + 'px',
+		height: length + 'px',
+		}).apply(board);
+	};
+	box.resize();
+	window.on('resize', box.resize);
 	for (let [i, j] = [0, 0]; i < 8; (() => {
 		j++;
 		if (j == 8) {
