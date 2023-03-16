@@ -12,7 +12,7 @@ document.palette = {
 };
 
 new Style({
-	height: '100%',
+	height: '100vh',
 	display: 'flex',
 	alignItems: 'stretch',
 	justifyContent: 'stretch',
@@ -65,10 +65,12 @@ const nav = new HTMLFragment(nav => {
 	}).apply(box);
 	const menu = box.append('ul', ['style*']);
 	new Style({
-		listStyleType: 'none',
+		position: 'sticky',
 		display: 'flex',
+		top: '0',
 		margin: '0',
 		padding: '0',
+		listStyleType: 'none',
 		background: document.palette.back,
 		borderTop: '2px solid' + document.palette.dark,
 		borderLeft: '2px solid' + document.palette.dark,
