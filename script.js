@@ -12,6 +12,7 @@ document.palette = {
 };
 
 new Style({
+	width: '100vw',
 	height: '100vh',
 	display: 'flex',
 	alignItems: 'stretch',
@@ -60,9 +61,6 @@ const load = function(page) {
 
 const nav = new HTMLFragment(nav => {
 	const box = nav.append('div', ['style*']);
-	new Style({
-		flex: '1',
-	}).apply(box);
 	const menu = box.append('ul', ['style*']);
 	new Style({
 		position: 'sticky',
@@ -126,8 +124,7 @@ const othello = new HTMLDocument(body => {
 	});
 	const box = body.append('div', ['style*']);
 	new Style({
-		width: '100%',
-		height: '100%',
+		flex: '1',
 		display: 'flex',
 		alignItems: 'flex-start',
 		justifyContent: 'center',
@@ -150,10 +147,10 @@ const othello = new HTMLDocument(body => {
 	};
 	box.resize();
 	window.on('resize', box.resize);
-	for (let [i, j] = [0, 0]; i < 8; (() => {
+	for (let [i, j] = [1, 1]; i < 9; (() => {
 		j++;
-		if (j == 8) {
-			j = 0;
+		if (j == 9) {
+			j = 1;
 			i++;
 		}
 	})()) {
