@@ -112,10 +112,17 @@ const othello = new HTMLDocument(body => {
 		localStorage.removeItem('othello');
 		othello.load();
 	});
-	const board = body.append('div', ['style*']);
+	const box = body.append('div', ['style*']);
 	new Style({
 		width: '100%',
-		height: '60%',
+		height: '100%',
+	}).apply(box);
+	const rect = box.HTMLObject.getBoundingClientRect();
+	const length = Math.min(rect.width, rect.height);
+	const board = box.append('div', ['style*']);
+	new Style({
+		width: length + 'px',
+		height: length + 'px',
 		background: document.palette.dark,//'#556655',//'EEFFEE',
 		display: 'grid',
 		grid: 'repeat(8, 11%) / repeat(8, 11%)',
