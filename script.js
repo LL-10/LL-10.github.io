@@ -35,7 +35,8 @@ new Style({
 	flex: '1',
 	display: 'flex',
 	flexDirection: 'column',
-	overflow: 'scroll',
+	alignItems: 'stretch',
+	overflow: 'hidden',
 	background: 'inherit',
 	color: document.palette.color,
 }).apply(document.body);
@@ -132,10 +133,12 @@ const othello = new HTMLDocument(body => {
 	});
 	const box = body.append('div', ['style*']);
 	new Style({
-		flex: '1',
+		flex: 'auto',
 		display: 'flex',
-		alignItems: 'flex-start',
+		alignItems: 'center',
 		justifyContent: 'center',
+//*//*/		background: 'blue',
+	overflow: 'hidden',
 	}).apply(box);
 	const board = box.append('div', ['style*']);
 	new Style({
