@@ -11,6 +11,14 @@ document.palette = {
 	color: '#420D09',
 };
 
+document.text = {
+	title: {
+		home: 'LL',
+		loading: 'LL - loading',
+		othello: 'LL - Othello',
+	}
+}
+
 new Style({
 	width: '100vw',
 	height: '100vh',
@@ -53,7 +61,7 @@ const load = function(page) {
 		setTimeout(()=>{
 			loader.style.transform = 'rotate(1.5turn)';
 		}, 2);
-	}, 'LL - loading').load();
+	}, document.text.title.loading).load();
 	setTimeout(()=>{
 		page.load();
 	}, 1200);
@@ -114,7 +122,7 @@ const nav = new HTMLFragment(nav => {
 
 const home = new HTMLDocument(body => {
 	nav.use();
-}, 'LL');
+}, document.text.title.home);
 
 const othello = new HTMLDocument(body => {
 	nav.use();
@@ -160,5 +168,5 @@ const othello = new HTMLDocument(body => {
 			background: document.palette.light,//'#118822',
 		}).apply(square);
 	}
-}, 'LL - Othello');
+}, document.text.title.othello);
 load(home);
