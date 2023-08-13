@@ -1,5 +1,5 @@
 document.palette = {
-	background: '#FFEOEO',
+	background: '#FFE0E0',
 	light: '#F7B6B6',
 	back: '#EC7575',
 	coral: '#E34242',
@@ -54,7 +54,7 @@ new Style({
 }).apply(document.body);
 
 const load = function(page) {
-	new HTMLDocument((body, head) => {
+	new HTMLDocument((body) => {
 		nav.use();
 		const loader = body.append('div', ['style*']);
 		const x = 40;
