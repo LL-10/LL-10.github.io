@@ -158,7 +158,7 @@ const othello = new HTMLDocument(body => {
 		grid: 'repeat(8, 11%) / repeat(8, 11%)',
 		placeItems: 'stretch',
 		placeContent: 'space-evenly',
-		background: document.palette.dark,//'#556655',//'EEFFEE',
+		background: document.palette.dark,//'#556655',//'#EEFFEE',
 	}).apply(board);
 	box.resize = function() {
 		const rect = box.HTMLObject.getBoundingClientRect();
@@ -172,7 +172,7 @@ const othello = new HTMLDocument(body => {
 	window.on('resize', box.resize);
 	for (let [i, j] = [1, 1]; i < 9; (() => {
 		j++;
-		if (j == 9) {
+		if (j === 9) {
 			j = 1;
 			i++;
 		}
