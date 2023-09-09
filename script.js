@@ -189,7 +189,6 @@ const othello = new HTMLDocument(body => {
 		squares[i][j].set = function (value) {
 			this.value = value;
 			this.write(fonts[value]);
-			//this.append('', null, null, namespace);
 		}
 	}
 	const fonts = {
