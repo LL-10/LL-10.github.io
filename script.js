@@ -53,7 +53,7 @@ new Style({
 	color: document.palette.color,
 }).apply(document.body);
 
-const load = function(page) {
+const load = function (page) {
 	new HTMLDocument((body) => {
 		nav.use();
 		const loader = body.append('div', ['style*']);
@@ -65,17 +65,17 @@ const load = function(page) {
 			left: '50%',
 			width: x + 'px',
 			height: x + 'px',
-			margin: '-' + ( x / 2 + bord ) + 'px 0 0 -' + ( x / 2 + bord ) + 'px',
+			margin: '-' + (x / 2 + bord) + 'px 0 0 -' + (x / 2 + bord) + 'px',
 			borderRadius: '50%',
 			border: bord + 'px solid ' + document.palette.light,
 			borderTop: bord + 'px solid ' + document.palette.red,
 			transition: 'transform linear 1200ms',
 		}).apply(loader);
-		setTimeout(()=>{
+		setTimeout(() => {
 			loader.style.transform = 'rotate(1.5turn)';
 		}, 2);
 	}, document.text.load.title).load();
-	setTimeout(()=>{
+	setTimeout(() => {
 		page.load();
 	}, 1200);
 }
@@ -97,7 +97,7 @@ const nav = new HTMLFragment(nav => {
 	}).apply(menu);
 	const HOME = menu.append('li', ['style*']).write(document.text.menu.HOME.button).on('click', () => {
 		load(home);
-});
+	});
 	const GAMES = menu.append('li', ['style*']).write(document.text.menu.GAMES.button);
 	new Style({
 		flex: '1',
@@ -117,7 +117,7 @@ const nav = new HTMLFragment(nav => {
 	}).apply(submenu);
 	GAMES.on('mouseover touchstart hover', () => {
 		submenu.style.display = 'flex';
-	}).on('mouseout touchleave touchcancel' , () => {
+	}).on('mouseout touchleave touchcancel', () => {
 		submenu.style.display = 'none';
 	});
 	const OTHELLO = submenu.append('li', ['style*']).write('Othello').on('click', () => {
@@ -150,7 +150,7 @@ const othello = new HTMLDocument(body => {
 		alignItems: 'center',
 		justifyContent: 'center',
 //*//*/		background: 'blue',
-	overflow: 'hidden',
+		overflow: 'hidden',
 	}).apply(box);
 	const board = box.append('div', ['style*']);
 	new Style({
@@ -160,12 +160,12 @@ const othello = new HTMLDocument(body => {
 		placeContent: 'space-evenly',
 		background: document.palette.dark,//'#556655',//'#EEFFEE',
 	}).apply(board);
-	box.resize = function() {
+	box.resize = function () {
 		const rect = box.HTMLObject.getBoundingClientRect();
 		const length = Math.min(rect.width, rect.height);
 		new Style({
-		width: length + 'px',
-		height: length + 'px',
+			width: length + 'px',
+			height: length + 'px',
 		}).apply(board);
 	};
 	box.resize();
