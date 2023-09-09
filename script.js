@@ -197,6 +197,8 @@ const othello = new HTMLDocument(body => {
 	}
 	squares[3][3].set(0);
 	squares[4][4].set(0);
+	squares[3][4].set(1);
+	squares[4][3].set(1);
 }, document.text.othello.title);
 
 load(home);
