@@ -149,7 +149,6 @@ const othello = new HTMLDocument(body => {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-//*//*/		background: 'blue',
 		overflow: 'hidden',
 	}).apply(box);
 	const board = box.append('div', ['style*']);
@@ -158,7 +157,7 @@ const othello = new HTMLDocument(body => {
 		grid: 'repeat(8, 11%) / repeat(8, 11%)',
 		placeItems: 'stretch',
 		placeContent: 'space-evenly',
-		background: document.palette.dark,//'#556655',//'#EEFFEE',
+		background: document.palette.dark,
 	}).apply(board);
 	box.resize = function () {
 		const rect = box.HTMLObject.getBoundingClientRect();
@@ -170,6 +169,7 @@ const othello = new HTMLDocument(body => {
 	};
 	box.resize();
 	window.on('resize', box.resize);
+	const squares = [];
 	for (let [i, j] = [1, 1]; i < 9; (() => {
 		j++;
 		if (j === 9) {
@@ -177,11 +177,17 @@ const othello = new HTMLDocument(body => {
 			i++;
 		}
 	})()) {
-		const square = board.append('div', ['style*']);
+		squares[i] = [];
+		squares[i][j] = board.append('div', ['style*']);
 		new Style({
 			gridArea: i + '/' + j,
-			background: document.palette.light,//'#118822',
-		}).apply(square);
+			background: document.palette.light,
+		}).apply(squares[i][j]);
+	}
+	const fonts = {
+		0: '&#9899',
+		1: '&#9898',
 	}
 }, document.text.othello.title);
+
 load(home);
