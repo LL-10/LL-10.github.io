@@ -170,24 +170,32 @@ const othello = new HTMLDocument(body => {
 	box.resize();
 	window.on('resize', box.resize);
 	const squares = [];
-	for (let [i, j] = [1, 1]; i < 9; (() => {
+	for (let [i, j] = [0, 0]; i < 8; (() => {
 		j++;
-		if (j === 9) {
-			j = 1;
+		if (j === 8) {
+			j = 0;
 			i++;
 		}
 	})()) {
-		squares[i] = [];
+		squares[i] ? () => false : (() => {
+			squares[i] = [];
+		})();
 		squares[i][j] = board.append('div', ['style*']);
 		new Style({
-			gridArea: i + '/' + j,
+			gridArea: (i + 1) + '/' + (j + 1),
 			background: document.palette.light,
 		}).apply(squares[i][j]);
+		squares[i][j].value = -1;
+		squares[i][j].set = function (value) {
+			this.value = value;
+			this.write(fonts[value]);
+		}
 	}
 	const fonts = {
 		0: '&#9899',
 		1: '&#9898',
 	}
+	squares[3][3].set(0);
 }, document.text.othello.title);
 
 load(home);
