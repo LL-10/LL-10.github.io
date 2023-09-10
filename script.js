@@ -140,7 +140,7 @@ const home = new HTMLDocument(body => {
 const othello = new HTMLDocument(body => {
 	nav.use();
 	const restart = body.append('button', ['style*']).write('RESTART GAME').on('click', () => {
-		localStorage.removeItem('othello');
+		localStorage.removeItem('othello');//TODO initialize othello in localstorage
 		othello.load();
 	});
 	const box = body.append('div', ['style*']);
@@ -195,7 +195,7 @@ const othello = new HTMLDocument(body => {
 		0: '\u26ab',
 		1: '\u26aa',
 	}
-	squares[3][3].set(0);
+	squares[3][3].set(0); //TODO get from localstorage
 	squares[4][4].set(0);
 	squares[3][4].set(1);
 	squares[4][3].set(1);
