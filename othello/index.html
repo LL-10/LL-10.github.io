@@ -20,7 +20,7 @@
 		};
 		const sqs = defaults();
 		var turn = 0;/*black starts*/
-		var cpass = 0;
+		var passCount = 0;
 		var actv = 0;
 		var bord = [[2, 2], [2, 3], [2, 4], [2, 5], [3, 2], [3, 5], [4, 2], [4, 5], [5, 2], [5, 3], [5, 4], [5, 5]];
 		let move = 0;
@@ -92,7 +92,7 @@
 					pass();
 					await new Promise(scr => setTimeout(scr, 200));
 					alert('No possible moves - PASS - ' + (turn == 0 ? 'black' : 'white') + '\'s turn');
-					if (cpass == 2) {
+					if (passCount == 2) {
 						break;
 					}
 				}
@@ -160,13 +160,13 @@
 			turn++;
 			turn %= 2;
 			move++;
-			cpass = 0;
+			passCount = 0;
 		}
 		
 		function pass() {
 			turn++;
 			turn %= 2;
-			cpass++;
+			passCount++;
 		}
 		
 		function defaults() {
