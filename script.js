@@ -238,11 +238,11 @@ const othello = new HTMLDocument(body => {
 			passCount,
 			bord,
 		} = data;
-		(async function () {
+		/*(async function () {
 			while (moves < 60) {
 				//TODO continue
 			}
-		})();
+		})();*/
 	};
 	
 	function reset() {
