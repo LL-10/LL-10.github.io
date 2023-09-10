@@ -233,7 +233,10 @@ const othello = new HTMLDocument(body => {
 			});
 		}
 		const {
-			moves, turn, passCount, bord
+			moves,
+			turn,
+			passCount,
+			bord,
 		} = data;
 		//TODO continue
 	};
