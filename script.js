@@ -1,6 +1,6 @@
 (async () => {
 	await import('./globals/palette.js');
-	await import('.globals/text.js');
+	await import('./globals/text.js');
 	
 	new Style({
 		width: '100vw',
