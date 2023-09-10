@@ -140,9 +140,11 @@ const home = new HTMLDocument(body => {
 const othello = new HTMLDocument(body => {
 	nav.use();
 	const restart = body.append('button', ['style*']).write('RESTART GAME').on('click', () => {
-		localStorage.removeItem('othello');//TODO initialize othello in localstorage
-		othello.load();
+		start();
 	});
+	if (localStorage.getItem('othello') == null) {
+		start();
+	}
 	const box = body.append('div', ['style*']);
 	new Style({
 		flex: 'auto',
@@ -195,10 +197,24 @@ const othello = new HTMLDocument(body => {
 		0: '\u26ab',
 		1: '\u26aa',
 	}
-	squares[3][3].set(0); //TODO get from localstorage
+	const data = JSON.parse(localStorage.getItem('othello'));
+	squares[3][3].set(0); //TODO get from localStorage
 	squares[4][4].set(0);
 	squares[3][4].set(1);
 	squares[4][3].set(1);
+	
+	function start() {
+		const data = new Array(8);
+		for (let i = 0; i < data.length; i++) {
+			data[i] = new Array(8).fill(-1);
+		}
+		data[3][3] = 0;
+		data[4][4] = 0;
+		data[3][4] = 1;
+		data[4][3] = 1;
+		localStorage.setItem('othello', JSON.stringify(data));
+		othello.load();
+	};
 }, document.text.othello.title);
 
 load(home);
