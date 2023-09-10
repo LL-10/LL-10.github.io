@@ -134,10 +134,12 @@ const nav = new HTMLFragment(nav => {
 });
 
 const home = new HTMLDocument(body => {
+	unblock();
 	nav.use();
 }, document.text.home.title);
 
 const othello = new HTMLDocument(body => {
+	block();
 	nav.use();
 	const restart = body.append('button', ['style*']).write('RESTART GAME').on('click', () => {
 		start();
@@ -161,16 +163,6 @@ const othello = new HTMLDocument(body => {
 		placeContent: 'space-evenly',
 		background: document.palette.dark,
 	}).apply(board);
-	box.resize = function () {
-		const rect = box.HTMLObject.getBoundingClientRect();
-		const length = Math.min(rect.width, rect.height);
-		new Style({
-			width: length + 'px',
-			height: length + 'px',
-		}).apply(board);
-	};
-	box.resize();
-	window.on('resize', box.resize);
 	const squares = [];
 	for (let [i, j] = [0, 0]; i < 8; (() => {
 		j++;
@@ -183,10 +175,6 @@ const othello = new HTMLDocument(body => {
 			squares[i] = [];
 		})();
 		squares[i][j] = board.append('div', ['style*']);
-		new Style({
-			gridArea: (i + 1) + '/' + (j + 1),
-			background: document.palette.light,
-		}).apply(squares[i][j]);
 		squares[i][j].value = -1;
 		squares[i][j].set = function (value) {
 			this.value = value;
@@ -194,14 +182,38 @@ const othello = new HTMLDocument(body => {
 		}
 	}
 	const fonts = {
+		'-1': '',
 		0: '\u26ab',
 		1: '\u26aa',
 	}
 	const data = JSON.parse(localStorage.getItem('othello'));
-	squares[3][3].set(0); //TODO get from localStorage
-	squares[4][4].set(0);
-	squares[3][4].set(1);
-	squares[4][3].set(1);
+	data.map((line, i) => {
+		line.map((value, j) => {
+			squares[i][j].set(value);
+		});
+	});
+	box.resize = function () {
+		const rect = box.HTMLObject.getBoundingClientRect();
+		const length = Math.min(rect.width, rect.height);
+		new Style({
+			width: length + 'px',
+			height: length + 'px',
+		}).apply(board);
+		squares.map((line, i) => {
+			line.map((square, j) => {
+				new Style({
+					gridArea: (i + 1) + '/' + (j + 1),
+					background: document.palette.light,
+					cursor: 'default',
+					textAlign: 'center',
+					verticalAlign: 'middle',
+					fontSize: length / 16 + 'px',
+				}).apply(squares[i][j]);
+			});
+		});
+	};
+	box.resize();
+	window.on('resize', box.resize);
 	
 	function start() {
 		const data = new Array(8);
@@ -218,3 +230,15 @@ const othello = new HTMLDocument(body => {
 }, document.text.othello.title);
 
 load(home);
+
+function block() {
+	document.body.oncontextmenu = () => false;
+	document.body.onselectstart = () => false;
+	document.body.ondragstart = () => false;
+}
+
+function unblock() {
+	document.body.oncontextmenu = () => true;
+	document.body.onselectstart = () => true;
+	document.body.ondragstart = () => true;
+}
