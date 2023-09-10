@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset='utf-8'>
 	<meta name='keywords' content='ll, ll-10, ll10, othello, reversi'>
@@ -55,7 +55,7 @@
 								sqs[el[0]][el[1]].set(turn);
 							}
 							if (x > 0 && y > 0 && sqs[x - 1][y - 1].value == -1 && bord.findIndex(el => (el[0] == x - 1 && el[1] == y - 1)) == -1) {
-								bord.push([x - 1, y - 1])
+								bord.push([x - 1, y - 1]);
 							}
 							;
 							if (x > 0 && sqs[x - 1][y].value == -1 && bord.findIndex(el => (el[0] == x - 1 && el[1] == y)) == -1) {
