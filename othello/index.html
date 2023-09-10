@@ -1,228 +1,239 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset='utf-8'>
-  <meta name='keywords' content='ll, ll-10, ll10, othello, reversi'>
-  <meta name='viewport'
-content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
-  <title>Othello</title>
- </head>
- <body>
-  <script>
-   start();
-   function start() {
-    document.body.innerHTML = '<div id="board"></div><button id="restart">RESTART GAME</button>';
-    var restart = document.getElementById('restart');
-    restart.style.position = 'absolute';
-    restart.onclick = ()=>{start()};
-    const sqs = defaults();
-    var turn = 0;/*black starts*/
-    var cpass = 0;
-    var actv = 0;
-    var bord = [[2, 2], [2, 3], [2, 4], [2, 5], [3, 2], [3, 5], [4, 2], [4, 5], [5, 2], [5, 3], [5, 4], [5, 5]];
-    let move = 0;
-    (async () => {
-     while (move < 60) {
-      var done = false;
-      var movb = false;
-      var ss = {};
-      for (let el of bord) {
-       let x = el[0];
-       let y = el[1];
-       let s = [];
-       s.push(...check(x, -1, y, -1));
-       s.push(...check(x, -1, y, 0));
-       s.push(...check(x, -1, y, 1));
-       s.push(...check(x, 0, y, -1));
-       s.push(...check(x, 0, y, 1));
-       s.push(...check(x, 1, y, -1));
-       s.push(...check(x, 1, y, 0));
-       s.push(...check(x, 1, y, 1));
-       ss[el] = s;
-       if (actv) {
-        movb = true;
-        sqs[x][y].onclick = () => {
-         done = true;
-         for (let el of bord) {
-          sqs[el[0]][el[1]].onclick = null;
-         }
-         bord.splice(bord.findIndex(el => (el[0]==x && el[1]==y)), 1);
-         sqs[x][y].set(turn);
-         for (let el of ss[[x, y]]) {
-          sqs[el[0]][el[1]].set(turn);
-         }
-         if (x > 0 && y > 0 && sqs[x-1][y-1].value==-1 && bord.findIndex(el => (el[0]==x-1 && el[1]==y-1))==-1) {
-          bord.push([x-1, y-1])
-         };
-         if (x > 0 && sqs[x-1][y].value==-1 && bord.findIndex(el => (el[0]==x-1 && el[1]==y))==-1) {
-          bord.push([x-1, y]);
-         }
-         if (x > 0 && y < 7 && sqs[x-1][y+1].value==-1 && bord.findIndex(el => (el[0]==x-1&&el[1]==y+1))==-1) { bord.push([x-1, y+1]);
-         }
-         if (y>0 && sqs[x][y-1].value==-1 && bord.findIndex(el => (el[0]==x&&el[1]==y-1))==-1) {
-          bord.push([x, y-1]);
-         }
-         if (y < 7 && sqs[x][y+1].value==-1 && bord.findIndex(el => (el[0]==x&&el[1]==y+1))==-1) {
-          bord.push([x, y+1]);
-         }
-         if (x < 7 && y>0 && sqs[x+1][y-1].value==-1 && bord.findIndex(el => (el[0]==x+1&&el[1]==y-1))==-1) {
-          bord.push([x+1, y-1]);
-         }
-         if (x < 7 && sqs[x+1][y].value==-1 && bord.findIndex(el => (el[0]==x+1&&el[1]==y))==-1) {
-          bord.push([x+1, y]);
-         }
-         if (x < 7 && y<7 && sqs[x+1][y+1].value==-1 && bord.findIndex(el => (el[0]==x+1&&el[1]==y+1))==-1) {
-          bord.push([x+1, y+1]);
-         }
-        }
-        actv = 0;
-       }
-      }
-      if (movb) {
-       while (!done) {
-        await new Promise(scr => setTimeout(scr, 1));
-       }
-       next();
-      } else {
-       pass();
-       await new Promise(scr => setTimeout(scr, 200));
-       alert('No possible moves - PASS - '+(turn==0 ? 'black' : 'white')+'\'s turn');
-       if (cpass==2) {
-        break;
-       }
-      }
-     }
-     await new Promise(scr => setTimeout(scr, 200));
-     end();
-    })();
-    function end() {
-     var b = 0;
-     var w = 0;
-     for (let i = 0; i < 8; i++) {
-      for (let j = 0; j < 8; j++) {
-       if (sqs[i][j].value==0) {
-        b++;
-       } else if (sqs[i][j].value==1) {
-        w++;
-       }
-      }
-     }
-     if (b > w) {
-      alert('Black wins ' + b + '-' + w);
-     } else if (w > b) {
-      alert('White wins '+ w + '-' + b);
-     } else {
-      alert('Draw '+ b + '-' + w);
-     }
-    }
-    function check(x, dx, y, dy) {
-     var s = [];
-     if (x+dx>=0 && x+dx<8 && y+dy>=0 && y+dy<8) {
-      if (sqs[x+dx][y+dy].value==(turn+1)%2) {
-       let v;
-       let b = false;
-       let xx = x+dx;
-       let yy = y+dy;
-       while (!v) {
-        if (xx >= 0 && xx < 8 && yy >= 0 && yy < 8) {
-         if (sqs[xx][yy].value==(turn+1)%2) {
-          s.push([xx, yy]);
-          xx+=dx;
-          yy+=dy;
-          b = true;
-         } else if (sqs[xx][yy].value==turn) {
-          if (b) {
-           actv = 1;
-          }
-          v = true;
-         } else if (sqs[xx][yy].value==-1) {
-          v = true;
-          s = [];
-         }
-        } else {
-         v = true;
-         s = [];
-        }
-       }
-      }
-     }
-     return s;
-    }
-    function next() {
-     turn++;
-     turn %= 2;
-     move++;
-     cpass = 0;
-    }
-    function pass() {
-     turn++;
-     turn %= 2;
-     cpass++;
-    }
-    function defaults() {
-     document.body.oncontextmenu = () => false;
-     document.body.onselectstart = () => false;
-     document.body.ondragstart = () => false;
-     document.body.style.margin = 0;
-     document.body.style.background = '#000';
-     var board = document.getElementById('board');
-     for(var n = 0; n < 64; n++){
-      var square = document.createElement('div');
-      square.classList.add('square');
-      square.id = 's'+n;
-      square.style.background = '#182f';
-      square.style.display = 'inline-block';
-      square.style.border = '1px solid #efe';
-      square.style.textAlign = 'center';
-      square.style.position = 'absolute';
-      square.style.cursor = 'default';
-      board.appendChild(square);
-     }
-     setDimensions();
-     window.onresize = setDimensions;
-     const fonts = {
-      0 : '&#9899',
-      1 : '&#9898'
-     }
-     const sqs = document.getElementsByClassName('square');
-     for(var n = 0; n < 64; n++){
-      sqs[n].value = -1;
-      sqs[n].set = function(value) {
-       this.value = value;
-       this.innerHTML = fonts[value];
-      }
-     }
-     var squares = [];
-     let k = 0;
-     while (k <= 64) {
-      squares.push([...sqs].slice(k, k += 8));
-     }
-     squares[3][3].set(0);
-     squares[4][4].set(0);
-     squares[3][4].set(1);
-     squares[4][3].set(1);
-     return squares;
-    }
-    function setDimensions() {
-     var w = window.innerWidth || 360;
-     var h = window.innerHeight || 500;
-     var rh = restart.getBoundingClientRect().height;
-     var tsw = (w > h) ? h-rh*1.48 : w;
-     var sw = (tsw - 16)/8;
-     document.body.style.width = w + 'px';
-     document.body.style.height = h + 'px';
-     restart.style.top = 7+(h-tsw)*0.5-rh*1.12 + 'px';
-     restart.style.left = 7+(w-tsw)*0.5 + 'px';
-     for(var n = 0; n < 64; n++){
-      var square = document.getElementById('s'+n);
-      square.style.height = sw + 'px';
-      square.style.width = sw + 'px';
-      square.style.top = 7+(h-tsw)*0.5+sw*(Math.floor(n/8)) + 'px';
-      square.style.left = 7+(w-tsw)*0.5+sw*(Math.floor(n%8)) + 'px';
-      square.style.fontSize = sw*3/4 + 'px';
-     }
-    }
-   }
-  </script>
- </body>
+<head>
+	<meta charset='utf-8'>
+	<meta name='keywords' content='ll, ll-10, ll10, othello, reversi'>
+	<meta name='viewport'
+							content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+	<title>Othello</title>
+</head>
+<body>
+<script>
+	start();
+	
+	function start() {
+		document.body.innerHTML = '<div id="board"></div><button id="restart">RESTART GAME</button>';
+		var restart = document.getElementById('restart');
+		restart.style.position = 'absolute';
+		restart.onclick = () => {
+			start()
+		};
+		const sqs = defaults();
+		var turn = 0;/*black starts*/
+		var cpass = 0;
+		var actv = 0;
+		var bord = [[2, 2], [2, 3], [2, 4], [2, 5], [3, 2], [3, 5], [4, 2], [4, 5], [5, 2], [5, 3], [5, 4], [5, 5]];
+		let move = 0;
+		(async () => {
+			while (move < 60) {
+				var done = false;
+				var movb = false;
+				var ss = {};
+				for (let el of bord) {
+					let x = el[0];
+					let y = el[1];
+					let s = [];
+					s.push(...check(x, -1, y, -1));
+					s.push(...check(x, -1, y, 0));
+					s.push(...check(x, -1, y, 1));
+					s.push(...check(x, 0, y, -1));
+					s.push(...check(x, 0, y, 1));
+					s.push(...check(x, 1, y, -1));
+					s.push(...check(x, 1, y, 0));
+					s.push(...check(x, 1, y, 1));
+					ss[el] = s;
+					if (actv) {
+						movb = true;
+						sqs[x][y].onclick = () => {
+							done = true;
+							for (let el of bord) {
+								sqs[el[0]][el[1]].onclick = null;
+							}
+							bord.splice(bord.findIndex(el => (el[0] == x && el[1] == y)), 1);
+							sqs[x][y].set(turn);
+							for (let el of ss[[x, y]]) {
+								sqs[el[0]][el[1]].set(turn);
+							}
+							if (x > 0 && y > 0 && sqs[x - 1][y - 1].value == -1 && bord.findIndex(el => (el[0] == x - 1 && el[1] == y - 1)) == -1) {
+								bord.push([x - 1, y - 1])
+							}
+							;
+							if (x > 0 && sqs[x - 1][y].value == -1 && bord.findIndex(el => (el[0] == x - 1 && el[1] == y)) == -1) {
+								bord.push([x - 1, y]);
+							}
+							if (x > 0 && y < 7 && sqs[x - 1][y + 1].value == -1 && bord.findIndex(el => (el[0] == x - 1 && el[1] == y + 1)) == -1) {
+								bord.push([x - 1, y + 1]);
+							}
+							if (y > 0 && sqs[x][y - 1].value == -1 && bord.findIndex(el => (el[0] == x && el[1] == y - 1)) == -1) {
+								bord.push([x, y - 1]);
+							}
+							if (y < 7 && sqs[x][y + 1].value == -1 && bord.findIndex(el => (el[0] == x && el[1] == y + 1)) == -1) {
+								bord.push([x, y + 1]);
+							}
+							if (x < 7 && y > 0 && sqs[x + 1][y - 1].value == -1 && bord.findIndex(el => (el[0] == x + 1 && el[1] == y - 1)) == -1) {
+								bord.push([x + 1, y - 1]);
+							}
+							if (x < 7 && sqs[x + 1][y].value == -1 && bord.findIndex(el => (el[0] == x + 1 && el[1] == y)) == -1) {
+								bord.push([x + 1, y]);
+							}
+							if (x < 7 && y < 7 && sqs[x + 1][y + 1].value == -1 && bord.findIndex(el => (el[0] == x + 1 && el[1] == y + 1)) == -1) {
+								bord.push([x + 1, y + 1]);
+							}
+						}
+						actv = 0;
+					}
+				}
+				if (movb) {
+					while (!done) {
+						await new Promise(scr => setTimeout(scr, 1));
+					}
+					next();
+				} else {
+					pass();
+					await new Promise(scr => setTimeout(scr, 200));
+					alert('No possible moves - PASS - ' + (turn == 0 ? 'black' : 'white') + '\'s turn');
+					if (cpass == 2) {
+						break;
+					}
+				}
+			}
+			await new Promise(scr => setTimeout(scr, 200));
+			end();
+		})();
+		
+		function end() {
+			var b = 0;
+			var w = 0;
+			for (let i = 0; i < 8; i++) {
+				for (let j = 0; j < 8; j++) {
+					if (sqs[i][j].value == 0) {
+						b++;
+					} else if (sqs[i][j].value == 1) {
+						w++;
+					}
+				}
+			}
+			if (b > w) {
+				alert('Black wins ' + b + '-' + w);
+			} else if (w > b) {
+				alert('White wins ' + w + '-' + b);
+			} else {
+				alert('Draw ' + b + '-' + w);
+			}
+		}
+		
+		function check(x, dx, y, dy) {
+			var s = [];
+			if (x + dx >= 0 && x + dx < 8 && y + dy >= 0 && y + dy < 8) {
+				if (sqs[x + dx][y + dy].value == (turn + 1) % 2) {
+					let v;
+					let b = false;
+					let xx = x + dx;
+					let yy = y + dy;
+					while (!v) {
+						if (xx >= 0 && xx < 8 && yy >= 0 && yy < 8) {
+							if (sqs[xx][yy].value == (turn + 1) % 2) {
+								s.push([xx, yy]);
+								xx += dx;
+								yy += dy;
+								b = true;
+							} else if (sqs[xx][yy].value == turn) {
+								if (b) {
+									actv = 1;
+								}
+								v = true;
+							} else if (sqs[xx][yy].value == -1) {
+								v = true;
+								s = [];
+							}
+						} else {
+							v = true;
+							s = [];
+						}
+					}
+				}
+			}
+			return s;
+		}
+		
+		function next() {
+			turn++;
+			turn %= 2;
+			move++;
+			cpass = 0;
+		}
+		
+		function pass() {
+			turn++;
+			turn %= 2;
+			cpass++;
+		}
+		
+		function defaults() {
+			document.body.oncontextmenu = () => false;
+			document.body.onselectstart = () => false;
+			document.body.ondragstart = () => false;
+			document.body.style.margin = 0;
+			document.body.style.background = '#000';
+			var board = document.getElementById('board');
+			for (var n = 0; n < 64; n++) {
+				var square = document.createElement('div');
+				square.classList.add('square');
+				square.id = 's' + n;
+				square.style.background = '#182f';
+				square.style.display = 'inline-block';
+				square.style.border = '1px solid #efe';
+				square.style.textAlign = 'center';
+				square.style.position = 'absolute';
+				square.style.cursor = 'default';
+				board.appendChild(square);
+			}
+			setDimensions();
+			window.onresize = setDimensions;
+			const fonts = {
+				0: '&#9899',
+				1: '&#9898'
+			}
+			const sqs = document.getElementsByClassName('square');
+			for (var n = 0; n < 64; n++) {
+				sqs[n].value = -1;
+				sqs[n].set = function (value) {
+					this.value = value;
+					this.innerHTML = fonts[value];
+				}
+			}
+			var squares = [];
+			let k = 0;
+			while (k <= 64) {
+				squares.push([...sqs].slice(k, k += 8));
+			}
+			squares[3][3].set(0);
+			squares[4][4].set(0);
+			squares[3][4].set(1);
+			squares[4][3].set(1);
+			return squares;
+		}
+		
+		function setDimensions() {
+			var w = window.innerWidth || 360;
+			var h = window.innerHeight || 500;
+			var rh = restart.getBoundingClientRect().height;
+			var tsw = (w > h) ? h - rh * 1.48 : w;
+			var sw = (tsw - 16) / 8;
+			document.body.style.width = w + 'px';
+			document.body.style.height = h + 'px';
+			restart.style.top = 7 + (h - tsw) * 0.5 - rh * 1.12 + 'px';
+			restart.style.left = 7 + (w - tsw) * 0.5 + 'px';
+			for (var n = 0; n < 64; n++) {
+				var square = document.getElementById('s' + n);
+				square.style.height = sw + 'px';
+				square.style.width = sw + 'px';
+				square.style.top = 7 + (h - tsw) * 0.5 + sw * (Math.floor(n / 8)) + 'px';
+				square.style.left = 7 + (w - tsw) * 0.5 + sw * (Math.floor(n % 8)) + 'px';
+				square.style.fontSize = sw * 3 / 4 + 'px';
+			}
+		}
+	}
+</script>
+</body>
 </html>

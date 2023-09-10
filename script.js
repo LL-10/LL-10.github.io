@@ -240,6 +240,9 @@ const othello = new HTMLDocument(body => {
 		data[4][4] = 0;
 		data[3][4] = 1;
 		data[4][3] = 1;
+		data.turn = 0;
+		data.bord = [[2, 2], [2, 3], [2, 4], [2, 5], [3, 2], [3, 5], [4, 2], [4, 5], [5, 2], [5, 3], [5, 4], [5, 5]];
+		data.move = 0;
 		localStorage.setItem('othello', JSON.stringify(data));
 		start();
 	};
