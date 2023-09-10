@@ -199,11 +199,11 @@ const othello = new HTMLDocument(body => {
 		1: '\u26aa',
 	}
 	const data = JSON.parse(localStorage.getItem('othello'));
-	data.map((line, i) => {
-		line.map((value, j) => {
+	for (let i = 0; i < 8; i++) {
+		data[i].map((value, j) => {
 			squares[i][j].set(value);
 		});
-	});
+	}
 	
 	box.resize = function () {
 		const rect = box.HTMLObject.getBoundingClientRect();
@@ -232,8 +232,8 @@ const othello = new HTMLDocument(body => {
 	};
 	
 	function reset() {
-		const data = new Array(8);
-		for (let i = 0; i < data.length; i++) {
+		const data = {};
+		for (let i = 0; i < 8; i++) {
 			data[i] = new Array(8).fill(-1);
 		}
 		data[3][3] = 0;
