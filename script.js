@@ -1,25 +1,6 @@
 (async () => {
 	await import('./globals/palette.js');
-	
-	document.text = {
-		load: {
-			title: 'LL - loading',
-		},
-		menu: {
-			HOME: {
-				button: 'HOME',
-			},
-			GAMES: {
-				button: 'GAMES',
-			}
-		},
-		home: {
-			title: 'LL',
-		},
-		othello: {
-			title: 'LL - Othello',
-		},
-	};
+	await import('.globals/text.js');
 	
 	new Style({
 		width: '100vw',
