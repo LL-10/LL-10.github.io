@@ -156,9 +156,6 @@ const othello = new HTMLDocument(body => {
 	const restart = body.append('button', ['style*']).write('RESTART GAME').on('click', () => {
 		reset();
 	});
-	if (localStorage.getItem('othello') == null) {
-		reset();
-	}
 	const box = body.append('div', ['style*']);
 	new Style({
 		flex: 'auto',
@@ -192,17 +189,17 @@ const othello = new HTMLDocument(body => {
 			this.value = value;
 			this.write(fonts[value]);
 		}
+		new Style({
+			gridArea: (i + 1) + '/' + (j + 1),
+			background: document.palette.light,
+			cursor: 'default',
+			textAlign: 'center',
+		}).apply(squares[i][j]);
 	}
 	const fonts = {
 		'-1': '',
 		0: '\u26ab',
 		1: '\u26aa',
-	}
-	const data = JSON.parse(localStorage.getItem('othello'));
-	for (let i = 0; i < 8; i++) {
-		data[i].map((value, j) => {
-			squares[i][j].set(value);
-		});
 	}
 	
 	box.resize = function () {
@@ -215,12 +212,7 @@ const othello = new HTMLDocument(body => {
 		squares.map((line, i) => {
 			line.map((square, j) => {
 				new Style({
-					gridArea: (i + 1) + '/' + (j + 1),
-					background: document.palette.light,
-					cursor: 'default',
-					textAlign: 'center',
-					verticalAlign: 'middle',
-					fontSize: length / 16 + 'px',
+					fontSize: length * 11 / 125 - 4 + 'px',
 				}).apply(squares[i][j]);
 			});
 		});
@@ -228,7 +220,22 @@ const othello = new HTMLDocument(body => {
 	box.resize();
 	window.on('resize', box.resize);
 	
+	start();
+	
 	function start() {
+		if (localStorage.getItem('othello') == null) {
+			reset();
+		}
+		const data = JSON.parse(localStorage.getItem('othello'));
+		for (let i = 0; i < 8; i++) {
+			data[i].map((value, j) => {
+				squares[i][j].set(value);
+			});
+		}
+		const {
+			moves, turn, passCount, bord
+		} = data;
+		//TODO continue
 	};
 	
 	function reset() {
@@ -240,9 +247,10 @@ const othello = new HTMLDocument(body => {
 		data[4][4] = 0;
 		data[3][4] = 1;
 		data[4][3] = 1;
+		data.moves = 0;
 		data.turn = 0;
+		data.passCount = 0;
 		data.bord = [[2, 2], [2, 3], [2, 4], [2, 5], [3, 2], [3, 5], [4, 2], [4, 5], [5, 2], [5, 3], [5, 4], [5, 5]];
-		data.move = 0;
 		localStorage.setItem('othello', JSON.stringify(data));
 		start();
 	};
