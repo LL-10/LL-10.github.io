@@ -223,7 +223,7 @@ const othello = new HTMLDocument(body => {
 	start();
 	
 	function start() {
-		if (localStorage.getItem('othello') == null) {
+		if (localStorage.getItem('othello') === null) {
 			reset();
 		}
 		const data = JSON.parse(localStorage.getItem('othello'));
@@ -232,7 +232,7 @@ const othello = new HTMLDocument(body => {
 				squares[i][j].set(value);
 			});
 		}
-		const {
+		let {
 			moves,
 			turn,
 			passCount,
@@ -240,14 +240,118 @@ const othello = new HTMLDocument(body => {
 		} = data;
 		(async function () {
 			while (moves < 60) {
-				var done = false;
+				let done = false;
+				let playable = false;
+				let active = false;
+				const possibleMoves = {};
 				for (let square of border) {
-					let x = square[0];
-					let y = square[1];
+					const [a, b] = square;
+					const reversible = [];
+					for (let [i, j] = [-1, -1]; i < 2; (() => {
+						j++;
+						if (j === 2) {
+							j = -1;
+							i++;
+						}
+					})()) {
+						let [x, y] = [a, b];
+						x += i;
+						y += j;
+						if (-1 < x < 8 && -1 < y < 8) {
+							const newReversible = [];
+							if (squares[x][y].value === (turn + 1) % 2) {
+								let check = false;
+								while (-1 < x < 8 && -1 < y < 8 && squares[x][y].value !== -1) {
+									if (squares[x][y].value === turn) {
+										if (check) {
+											active = true;
+										}
+										break;
+									} else {
+										newReversible.push([x, y]);
+										x += i;
+										y += j;
+										check = true;
+									}
+								}
+							}
+							reversible.push(...newReversible);
+						}
+					}
+					possibleMoves[square] = reversible;
+					if (active) {
+						playable = true;
+						squares[a][b].on('click', function () {
+							done = true;
+							for (let square of border) {
+								squares[square[0]][square[1]].on('click', () => false, 'once');
+							}
+							border.splice(border.findIndex(square => (square[0] === a && square[1] === b)), 1);
+							squares[a][b].set(turn);
+							possibleMoves[[a, b]].map(square => {
+								squares[square[0]][square[1]].set(turn);
+							});
+							for (let [i, j] = [-1, -1]; i < 2; (() => {
+								j++;
+								if (j === 2) {
+									j = -1;
+									i++;
+								}
+							})()) {
+								const [x, y] = [a + i, b + j];
+								if (-1 < x < 8 && -1 < y < 8) {
+									if (squares[x][y].value === -1) {
+										if (border.findIndex(square => (square[0] === x && square[1] === y) === -1)) {
+											border.push([x, y]);
+										}
+									}
+								}
+							}
+						});
+						active = false;
+					}
 				}
-				while (!done) {
-					await new Promise(scr => setTimeout(scr, 1));
+				if (playable) {
+					while (!done) {
+						await new Promise(scr => setTimeout(scr, 1));
+					}
+					turn++;
+					turn %= 2;
+					moves++;
+					passCount = 0;
+				} else {
+					turn++;
+					turn %= 2;
+					passCount++;
+					await new Promise(scr => setTimeout(scr, 200));
+					alert('No possible moves - PASS - ' + (turn === 0 ? 'black' : 'white') + '\'s turn');
+					if (passCount === 2) {
+						break;
+					}
 				}
+			}
+			await new Promise(scr => setTimeout(scr, 200));
+			let black = 0;
+			let white = 0;
+			for (let [i, j] = [0, 0]; i < 8; (() => {
+				j++;
+				if (j === 8) {
+					j = 0;
+					i++;
+				}
+			})()) {
+				if (squares[i , j].value === 0) {
+					black++;
+				} else if (squares[i, j].value === 1) {
+					white++;
+				}
+			}
+			if (black > white) {
+				alert('Black wins ' + black + ' - ' + white);
+			} else if (black < white) {
+				alert('White wins ' + white + ' - ' + black);
+			} else {
+				alert('Draw ' + black + ' - ' + white);
 			}
 		})();
 	};
