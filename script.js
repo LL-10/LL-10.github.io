@@ -284,7 +284,7 @@ const othello = new HTMLDocument(body => {
 						squares[a][b].on('click', function () {
 							done = true;
 							for (let square of border) {
-								squares[square[0]][square[1]].on('click', () => false, 'once');
+								squares[square[0]][square[1]].on('click', () => false);
 							}
 							border.splice(border.findIndex(square => (square[0] === a && square[1] === b)), 1);
 							squares[a][b].set(turn);
@@ -301,16 +301,17 @@ const othello = new HTMLDocument(body => {
 								const [x, y] = [a + i, b + j];
 								if (-1 < x < 8 && -1 < y < 8) {
 									if (squares[x][y].value === -1) {
-										if (border.findIndex(square => (square[0] === x && square[1] === y) === -1)) {
+										if (border.findIndex(square => (square[0] === x && square[1] === y)) === -1) {
 											border.push([x, y]);
 										}
 									}
 								}
 							}
-						});
+						}, 'once');
 						active = false;
 					}
 				}
+				console.log(border);/** */
 				if (playable) {
 					while (!done) {
 						await new Promise(scr => setTimeout(scr, 1));
