@@ -187,7 +187,7 @@ const othello = new HTMLDocument(body => {
 		squares[i][j].value = -1;
 		squares[i][j].set = function (value) {
 			this.value = value;
-			this.write(fonts[value]);
+			this.clear().write(fonts[value]);
 		}
 		new Style({
 			gridArea: (i + 1) + '/' + (j + 1),
@@ -236,13 +236,20 @@ const othello = new HTMLDocument(body => {
 			moves,
 			turn,
 			passCount,
-			bord,
+			border,
 		} = data;
-		/*(async function () {
+		(async function () {
 			while (moves < 60) {
-				//TODO continue
+				var done = false;
+				for (let square of border) {
+					let x = square[0];
+					let y = square[1];
+				}
+				while (!done) {
+					await new Promise(scr => setTimeout(scr, 1));
+				}
 			}
-		})();*/
+		})();
 	};
 	
 	function reset() {
@@ -257,7 +264,7 @@ const othello = new HTMLDocument(body => {
 		data.moves = 0;
 		data.turn = 0;
 		data.passCount = 0;
-		data.bord = [[2, 2], [2, 3], [2, 4], [2, 5], [3, 2], [3, 5], [4, 2], [4, 5], [5, 2], [5, 3], [5, 4], [5, 5]];
+		data.border = [[2, 2], [2, 3], [2, 4], [2, 5], [3, 2], [3, 5], [4, 2], [4, 5], [5, 2], [5, 3], [5, 4], [5, 5]];
 		localStorage.setItem('othello', JSON.stringify(data));
 		start();
 	};
