@@ -226,11 +226,10 @@ const othello = new HTMLDocument(body => {
 		if (localStorage.getItem('othello') === null)
 			reset();
 		const data = JSON.parse(localStorage.getItem('othello'));
-		for (let i = 0; i < 8; i++) {
+		for (let i = 0; i < 8; i++)
 			data[i].map((value, j) => {
 				squares[i][j].set(value);
 			});
-		}
 		let {
 			moves,
 			turn,
@@ -282,9 +281,8 @@ const othello = new HTMLDocument(body => {
 						playable = true;
 						squares[a][b].on('click', function () {
 							done = true;
-							for (let square of border) {
+							for (let square of border)
 								squares[square[0]][square[1]].on('click', () => false);
-							}
 							border.splice(border.findIndex(square => (square[0] === a && square[1] === b)), 1);
 							squares[a][b].set(turn);
 							possibleMoves[[a, b]].map(square => {
@@ -308,9 +306,8 @@ const othello = new HTMLDocument(body => {
 					}
 				}
 				if (playable) {
-					while (!done) {
+					while (!done)
 						await new Promise(scr => setTimeout(scr, 1));
-					}
 					turn++;
 					turn %= 2;
 					moves++;
@@ -334,12 +331,11 @@ const othello = new HTMLDocument(body => {
 					j = 0;
 					i++;
 				}
-			})()) {
+			})())
 				if (squares[i , j].value === 0)
 					black++;
 				else if (squares[i, j].value === 1)
 					white++;
-			}
 			if (black > white)
 				alert('Black wins ' + black + ' - ' + white);
 			else if (black < white)
@@ -351,9 +347,8 @@ const othello = new HTMLDocument(body => {
 	
 	function reset() {
 		const data = {};
-		for (let i = 0; i < 8; i++) {
+		for (let i = 0; i < 8; i++)
 			data[i] = new Array(8).fill(-1);
-		}
 		data[3][3] = 0;
 		data[4][4] = 0;
 		data[3][4] = 1;
