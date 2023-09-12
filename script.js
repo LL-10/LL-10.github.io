@@ -307,7 +307,7 @@ const othello = new HTMLDocument(body => {
 				}
 				if (playable) {
 					while (!done)
-						await new Promise(scr => setTimeout(scr, 1));
+						await new Promise(src => setTimeout(src, 1));
 					turn++;
 					turn %= 2;
 					moves++;
@@ -316,13 +316,13 @@ const othello = new HTMLDocument(body => {
 					turn++;
 					turn %= 2;
 					passCount++;
-					await new Promise(scr => setTimeout(scr, 200));
+					await new Promise(src => setTimeout(src, 200));
 					alert('No possible moves - PASS - ' + (turn === 0 ? 'black' : 'white') + '\'s turn');
 					if (passCount === 2)
 						break;
 				}
 			}
-			await new Promise(scr => setTimeout(scr, 200));
+			await new Promise(src => setTimeout(src, 200));
 			let black = 0;
 			let white = 0;
 			for (let [i, j] = [0, 0]; i < 8; (() => {
