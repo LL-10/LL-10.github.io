@@ -223,9 +223,8 @@ const othello = new HTMLDocument(body => {
 	start();
 	
 	function start() {
-		if (localStorage.getItem('othello') === null) {
+		if (localStorage.getItem('othello') === null)
 			reset();
-		}
 		const data = JSON.parse(localStorage.getItem('othello'));
 		for (let i = 0; i < 8; i++) {
 			data[i].map((value, j) => {
@@ -263,9 +262,8 @@ const othello = new HTMLDocument(body => {
 								let check = false;
 								while (-1 < x < 8 && -1 < y < 8 && squares[x][y].value !== -1) {
 									if (squares[x][y].value === turn) {
-										if (check) {
+										if (check)
 											active = true;
-										}
 										break;
 									} else {
 										newReversible.push([x, y]);
@@ -275,9 +273,8 @@ const othello = new HTMLDocument(body => {
 									}
 								}
 							}
-							if (active) {
+							if (active)
 								reversible.push(...newReversible);
-							}
 						}
 					}
 					possibleMoves[square] = reversible;
@@ -301,13 +298,10 @@ const othello = new HTMLDocument(body => {
 								}
 							})()) {
 								const [x, y] = [a + i, b + j];
-								if (-1 < x < 8 && -1 < y < 8) {
-									if (squares[x][y].value === -1) {
-										if (border.findIndex(square => (square[0] === x && square[1] === y)) === -1) {
+								if (-1 < x < 8 && -1 < y < 8)
+									if (squares[x][y].value === -1)
+										if (border.findIndex(square => (square[0] === x && square[1] === y)) === -1)
 											border.push([x, y]);
-										}
-									}
-								}
 							}
 						}, 'once');
 						active = false;
@@ -327,9 +321,8 @@ const othello = new HTMLDocument(body => {
 					passCount++;
 					await new Promise(scr => setTimeout(scr, 200));
 					alert('No possible moves - PASS - ' + (turn === 0 ? 'black' : 'white') + '\'s turn');
-					if (passCount === 2) {
+					if (passCount === 2)
 						break;
-					}
 				}
 			}
 			await new Promise(scr => setTimeout(scr, 200));
@@ -342,19 +335,17 @@ const othello = new HTMLDocument(body => {
 					i++;
 				}
 			})()) {
-				if (squares[i , j].value === 0) {
+				if (squares[i , j].value === 0)
 					black++;
-				} else if (squares[i, j].value === 1) {
+				else if (squares[i, j].value === 1)
 					white++;
-				}
 			}
-			if (black > white) {
+			if (black > white)
 				alert('Black wins ' + black + ' - ' + white);
-			} else if (black < white) {
+			else if (black < white)
 				alert('White wins ' + white + ' - ' + black);
-			} else {
+			else
 				alert('Draw ' + black + ' - ' + white);
-			}
 		})();
 	};
 	
