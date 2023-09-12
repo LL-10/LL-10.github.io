@@ -275,7 +275,9 @@ const othello = new HTMLDocument(body => {
 									}
 								}
 							}
-							reversible.push(...newReversible);
+							if (active) {
+								reversible.push(...newReversible);
+							}
 						}
 					}
 					possibleMoves[square] = reversible;
@@ -311,7 +313,6 @@ const othello = new HTMLDocument(body => {
 						active = false;
 					}
 				}
-				console.log(border);/** */
 				if (playable) {
 					while (!done) {
 						await new Promise(scr => setTimeout(scr, 1));

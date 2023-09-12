@@ -54,29 +54,21 @@
 							for (let el of possibleMoves[[x, y]]) {
 								squares[el[0]][el[1]].set(turn);
 							}
-							if (x > 0 && y > 0 && squares[x - 1][y - 1].value == -1 && border.findIndex(el => (el[0] == x - 1 && el[1] == y - 1)) == -1) {
-								border.push([x - 1, y - 1]);
-							}
-							if (x > 0 && squares[x - 1][y].value == -1 && border.findIndex(el => (el[0] == x - 1 && el[1] == y)) == -1) {
-								border.push([x - 1, y]);
-							}
-							if (x > 0 && y < 7 && squares[x - 1][y + 1].value == -1 && border.findIndex(el => (el[0] == x - 1 && el[1] == y + 1)) == -1) {
-								border.push([x - 1, y + 1]);
-							}
-							if (y > 0 && squares[x][y - 1].value == -1 && border.findIndex(el => (el[0] == x && el[1] == y - 1)) == -1) {
-								border.push([x, y - 1]);
-							}
-							if (y < 7 && squares[x][y + 1].value == -1 && border.findIndex(el => (el[0] == x && el[1] == y + 1)) == -1) {
-								border.push([x, y + 1]);
-							}
-							if (x < 7 && y > 0 && squares[x + 1][y - 1].value == -1 && border.findIndex(el => (el[0] == x + 1 && el[1] == y - 1)) == -1) {
-								border.push([x + 1, y - 1]);
-							}
-							if (x < 7 && squares[x + 1][y].value == -1 && border.findIndex(el => (el[0] == x + 1 && el[1] == y)) == -1) {
-								border.push([x + 1, y]);
-							}
-							if (x < 7 && y < 7 && squares[x + 1][y + 1].value == -1 && border.findIndex(el => (el[0] == x + 1 && el[1] == y + 1)) == -1) {
-								border.push([x + 1, y + 1]);
+							for (let [i, j] = [-1, -1]; i < 2; (() => {
+								j++;
+								if (j === 2) {
+									j = -1;
+									i++;
+								}
+							})()) {
+								const [a, b] = [x + i, y + j];
+								if (-1 < a < 8 && -1 < b < 8) {
+									if (squares[a][b].value === -1) {
+										if (border.findIndex(square => (square[0] === a && square[1] === b)) === -1) {
+											border.push([a, b]);
+										}
+									}
+								}
 							}
 						}
 						active = 0;
@@ -204,7 +196,8 @@
 			var squares = [];
 			let k = 0;
 			while (k <= 64) {
-				squares.push([...sqs].slice(k, k += 8));
+				squares.push([...sqs].slice(k, k + 8));
+				k += 8;
 			}
 			squares[3][3].set(0);
 			squares[4][4].set(0);
