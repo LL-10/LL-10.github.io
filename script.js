@@ -66,7 +66,7 @@ new Style({
 }).apply(document.body);
 
 function load(page) {
-	new HTMLDocument((body) => {
+	new HTMLDocument(body => {
 		navigation.use();
 		const loader = body.append('div', ['style*']);
 		const x = 40;
