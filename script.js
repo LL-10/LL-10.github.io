@@ -343,7 +343,7 @@ const othello = new HTMLDocument(body => {
 			else
 				alert('Draw ' + black + ' - ' + white);
 		})();
-	};
+	}
 	
 	function reset() {
 		const data = {};
@@ -359,7 +359,7 @@ const othello = new HTMLDocument(body => {
 		data.border = [[2, 2], [2, 3], [2, 4], [2, 5], [3, 2], [3, 5], [4, 2], [4, 5], [5, 2], [5, 3], [5, 4], [5, 5]];
 		localStorage.setItem('othello', JSON.stringify(data));
 		start();
-	};
+	}
 }, document.text.othello.title);
 
 load(home);
